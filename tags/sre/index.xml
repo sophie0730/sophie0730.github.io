@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SRE on Hsuan-Ni&#39;s blog</title>
+    <link>http://localhost:1313/tags/sre/</link>
+    <description>Recent content in SRE on Hsuan-Ni&#39;s blog</description>
+    <image>
+      <title>Hsuan-Ni&#39;s blog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.125.7</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 12 May 2024 14:30:04 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sre/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2024 SRE Conference Record (1)</title>
+      <link>http://localhost:1313/posts/2024/05/sre_conference_1/</link>
+      <pubDate>Sun, 12 May 2024 14:30:04 +0800</pubDate>
+      <guid>http://localhost:1313/posts/2024/05/sre_conference_1/</guid>
+      <description>iTHOME自2022年舉辦第一場SRE Conference，今年已是第三屆，而這也是我從AppWorks School後端班畢業後參加的第一場技術研討會。做為一個剛從後端領域跨足到SRE的新手來說，此行不僅看到各個公司在導入SRE以及kubernetes的評估與考量之外，透過工作坊的動手做，了解了kubernetes絕對不是僅止於撰寫yaml檔而已。感嘆著這條路的水果然很深之外，更因為還有許多地方可以探索而感到非常興奮。
+此篇文章主要是參加幾場演講下來的速記，因為有些演講的筆記較多，可能會分為兩到三篇來撰寫，同時也會以每場演講作為主題劃分。
+Data Architecture and Analysis about OpenTelemetry Observability 講者：蘇揮原 (Mars), TrendMicro
+講者一開始先從趨勢科技的自有產品 - Vision One作為引言，當產品從&amp;quot;Security Tool&amp;quot;逐漸壯大成一個&amp;quot;Cybersecurity Platform&amp;quot;時，那我們該怎麼去管理這些服務？我們可以從下面那張圖看到，Vision One透過單一的平台服務來偵測、預防與應對來自不同地方的資安攻擊與風險，並搭配自動化與人工智慧來落實全方位的資安管理。
+圖片擷取自趨勢科技官方網站：https://www.trendmicro.com/zh_tw/business/products/one-platform.html 那麼，有這麼多的服務都運行在單一的平台上面，勢必得做好管理。講者在這裡提到了兩個名詞：Proactive monitoring以及Observability。我會佔用以下小小的篇幅來大致講述這兩個名詞概念。
+許多針對監控相關的產品網站都提到了proactive monitoring的概念，而我在Datadog官方網站上找到proactive monitoring的定義為： Proactive monitoring is key to flagging potential issues with your applications and infrastructure early, enabling you to respond quickly and reduce downtime.
+意思即是，主動監控是及早發現應用程式與基礎架構潛在問題的關鍵，它幫助我們能快速針對這些問題做出反應，減少server downtime。
+在這裡講者也針對proactive monitoring拋出了一個概念：在用戶發現前先發現問題。
+另一方面，與Proactive Monitoring相互輝映的名詞及是Observebility，以我自己的邏輯來看，我們已經了解到了Proactive Monitoring的好處，那我們該怎麼去做到實際上的監控？第一，我們的系統必須具備可以被觀測(Observable)的能力；再來，透過這些觀測到的資訊，它應該要能幫助我們了解目前系統或者服務的狀態，且我們能有效利用這些資訊來做出適當的判斷。
+在這裡也一併附上CNCF(Cloud Native Computing Foundation)對於Observability的解釋：
+Observability is a system property that defines the degree to which the system can generate actionable insights.</description>
+    </item>
+  </channel>
+</rss>
