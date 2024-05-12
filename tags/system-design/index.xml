@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>System Design on Hsuan-Ni&#39;s blog</title>
-    <link>http://localhost:1313/tags/system-design/</link>
+    <link>https://sophiehsusite.com/tags/system-design/</link>
     <description>Recent content in System Design on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://sophiehsusite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophiehsusite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.125.7</generator>
     <language>en</language>
     <lastBuildDate>Sun, 12 May 2024 14:30:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sophiehsusite.com/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2024 SRE Conference Record (1)</title>
-      <link>http://localhost:1313/posts/2024/05/sre_conference_1/</link>
+      <link>https://sophiehsusite.com/posts/2024/05/sre_conference_1/</link>
       <pubDate>Sun, 12 May 2024 14:30:04 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/05/sre_conference_1/</guid>
+      <guid>https://sophiehsusite.com/posts/2024/05/sre_conference_1/</guid>
       <description>iTHOME自2022年舉辦第一場SRE Conference，今年已是第三屆，而這也是我從AppWorks School後端班畢業後參加的第一場技術研討會。做為一個剛從後端領域跨足到SRE的新手來說，此行不僅看到各個公司在導入SRE以及kubernetes的評估與考量之外，透過工作坊的動手做，了解了kubernetes絕對不是僅止於撰寫yaml檔而已。感嘆著這條路的水果然很深之外，更因為還有許多地方可以探索而感到非常興奮。
 此篇文章主要是參加幾場演講下來的速記，因為有些演講的筆記較多，可能會分為兩到三篇來撰寫，同時也會以每場演講作為主題劃分。
 Data Architecture and Analysis about OpenTelemetry Observability 講者：蘇揮原 (Mars), TrendMicro
