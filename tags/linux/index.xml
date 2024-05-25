@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Linux on Hsuan-Ni&#39;s blog</title>
+    <link>http://localhost:1313/tags/linux/</link>
+    <description>Recent content in Linux on Hsuan-Ni&#39;s blog</description>
+    <image>
+      <title>Hsuan-Ni&#39;s blog</title>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.125.7</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 18 May 2024 14:30:04 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>動手用Golang實作一個container</title>
+      <link>http://localhost:1313/posts/2024/05/build_container_by_go/</link>
+      <pubDate>Sat, 18 May 2024 14:30:04 +0800</pubDate>
+      <guid>http://localhost:1313/posts/2024/05/build_container_by_go/</guid>
+      <description>前言 開始第一份工作以後，更真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂container幫我們做了什麼事情嗎？為了更了解它的底層原理，那不如就自己來做一個container看看好了！
+CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。</description>
+    </item>
+  </channel>
+</rss>

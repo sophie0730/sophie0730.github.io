@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://sophie0730.github.io/categories/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://sophie0730.github.io/tags/golang/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://sophie0730.github.io/categories/golang/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://sophie0730.github.io/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://sophie0730.github.io/posts/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://sophie0730.github.io/tags/</loc>
+    <lastmod>2024-05-25T21:30:04+08:00</lastmod>
+  </url><url>
     <loc>https://sophie0730.github.io/posts/2024/05/sre_conference_1/</loc>
     <lastmod>2024-05-12T14:30:04+08:00</lastmod>
   </url><url>
-    <loc>https://sophie0730.github.io/categories/</loc>
-    <lastmod>2024-05-12T14:30:04+08:00</lastmod>
-  </url><url>
     <loc>https://sophie0730.github.io/tags/data/</loc>
-    <lastmod>2024-05-12T14:30:04+08:00</lastmod>
-  </url><url>
-    <loc>https://sophie0730.github.io/</loc>
-    <lastmod>2024-05-12T14:30:04+08:00</lastmod>
-  </url><url>
-    <loc>https://sophie0730.github.io/posts/</loc>
     <lastmod>2024-05-12T14:30:04+08:00</lastmod>
   </url><url>
     <loc>https://sophie0730.github.io/tags/sre/</loc>
@@ -24,9 +36,6 @@
     <lastmod>2024-05-12T14:30:04+08:00</lastmod>
   </url><url>
     <loc>https://sophie0730.github.io/tags/system-design/</loc>
-    <lastmod>2024-05-12T14:30:04+08:00</lastmod>
-  </url><url>
-    <loc>https://sophie0730.github.io/tags/</loc>
     <lastmod>2024-05-12T14:30:04+08:00</lastmod>
   </url><url>
     <loc>https://sophie0730.github.io/archives/</loc>
