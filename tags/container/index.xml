@@ -2,24 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Container on Hsuan-Ni&#39;s blog</title>
-    <link>http://localhost:1313/tags/container/</link>
+    <link>https://sophie0730.github.io/tags/container/</link>
     <description>Recent content in Container on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.125.7</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 May 2024 14:30:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 May 2024 22:01:20 +0800</lastBuildDate>
+    <atom:link href="https://sophie0730.github.io/tags/container/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>動手用Golang實作一個container</title>
-      <link>http://localhost:1313/posts/2024/05/build_container_by_go/</link>
-      <pubDate>Sat, 18 May 2024 14:30:04 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/05/build_container_by_go/</guid>
-      <description>前言 開始第一份工作以後，更真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂container幫我們做了什麼事情嗎？為了更了解它的底層原理，那不如就自己來做一個container看看好了！
-CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。</description>
+      <title>動手用Golang實作一個container - 概念篇</title>
+      <link>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</link>
+      <pubDate>Sun, 26 May 2024 22:01:20 +0800</pubDate>
+      <guid>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</guid>
+      <description>前言 開始第一份工作以後，真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂它幫我們做了什麼事情嗎？為了更了解容器化技術的底層原理，那不如就自己來做一個container看看好了！
+CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。
+什麼時候會需要用到container? 要回答這個問題，我們先來看看Docker官方對於container的解釋：
+A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
+一年前我還是個連docker都沒聽過的程式小白，當我想把網站部署到雲端上時，我的作法就是直接把github的程式碼clone到我的機器上，直接加裝任何程式碼所需要的套件及程式語言。現在回想起來，直接在機器上面運行程式碼實在有太多風險了：錯誤的程式碼可能造成系統損壞、資源過度消耗，甚至是運行的程式碼可能包含惡意程式而導致安全漏洞……除此之外，直接在機器上加裝一堆套件也讓環境變得又髒又亂，更別說在多人協作的開發場合中，建置環境時也很常發生「為什麼程式碼在你的電腦可以跑，我的不行？」的惱人狀況。
+基於以上痛點，我們再回頭來看container的定義：container是一個標準的軟體單位，它把程式碼以及所需要的環境與依賴項目給一起打包，讓整個應用程式可以快速地被搬運到另一個運算環境並且可靠地運行。有了container，我們不但可以避免直接運行程式碼的風險，開發環境與生產環境也都會變得乾淨許多。
+那麼，container是怎麼做到的？以上面的定義來看，container做到了環境打包、隔離，這兩個功能對應到的linux技術即是filesystem以及namespace，除此之外，host也需要去管理與限制container可以使用的資源，而這部分就屬於cgroups的範疇。因此，為了更了解container的底層原理，以下將會敘述這三個技術是怎麼成就container的。
+Namespace 當我們運行一個container時，會發現在container當中，我們只能看到在container裡運行的process，如果先前對container有一些認識，大概會知道container是使用命名空間來做到隔離。
+我們直接來看Linux manual page中對於Namespace的解釋：
+A namespace wraps a global system resource in an abstraction thatmakes it appear to the processes within the namespace that theyhave their own isolated instance of the global resource.</description>
     </item>
   </channel>
 </rss>
