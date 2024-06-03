@@ -11,8 +11,21 @@
     </image>
     <generator>Hugo -- 0.125.7</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 May 2024 22:01:20 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2024 19:30:04 +0800</lastBuildDate>
     <atom:link href="https://sophie0730.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>動手用Golang實作一個container - 實作篇</title>
+      <link>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</link>
+      <pubDate>Mon, 03 Jun 2024 19:30:04 +0800</pubDate>
+      <guid>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</guid>
+      <description>來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
+以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
+docker container run &amp;lt;image-name&amp;gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
+go run main.go run [cmd] 在這裡，我們會分別定義兩種function：
+run() : parent process要執行的function。負責創建child process及並配置其運行的環境（如namespace）。 child() : child process要執行的function。負責管理在container環境中，要如何運行用戶端所指定的命令。 而must()function則會作為error handler使用。
+func main() { switch os.Args[1] { case &amp;#34;run&amp;#34;: run() case &amp;#34;child&amp;#34;: child(); default: panic(&amp;#34;what??&amp;#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數，其型別為slice。如果我們只單印出os.Args，他會長的像這樣：
+sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &amp;#39;hi&amp;#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test.</description>
+    </item>
     <item>
       <title>動手用Golang實作一個container - 概念篇</title>
       <link>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</link>

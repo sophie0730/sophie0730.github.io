@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>SRE on Hsuan-Ni&#39;s blog</title>
-    <link>http://localhost:1313/categories/sre/</link>
-    <description>Recent content in SRE on Hsuan-Ni&#39;s blog</description>
+    <title>Workshop on Hsuan-Ni&#39;s blog</title>
+    <link>http://localhost:1313/categories/workshop/</link>
+    <description>Recent content in Workshop on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
       <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
@@ -12,7 +12,7 @@
     <generator>Hugo -- 0.125.7</generator>
     <language>en</language>
     <lastBuildDate>Sun, 12 May 2024 14:30:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/sre/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/workshop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2024 SRE Conference Record (1)</title>
       <link>http://localhost:1313/posts/2024/05/sre_conference_1/</link>
