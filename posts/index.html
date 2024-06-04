@@ -184,7 +184,7 @@
 docker container run &lt;image-name&gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
 go run main.go run [cmd] 在這裡，我們會分別定義兩種function：
 run() : parent process要執行的function。負責創建child process及並配置其運行的環境（如namespace）。 child() : child process要執行的function。負責管理在container環境中，要如何運行用戶端所指定的命令。 而must()function則會作為error handler使用。
-func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數，其型別為slice。如果我們只單印出os.Args，他會長的像這樣：
+func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：
 sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test....</p>
   </div>
   <footer class="entry-footer"><span title='2024-06-03 19:30:04 +0800 CST'>June 3, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
