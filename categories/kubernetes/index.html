@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Container | Hsuan-Ni&#39;s blog</title>
+<title>Kubernetes | Hsuan-Ni&#39;s blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="一些跟軟體工程相關的筆記區">
 <meta name="author" content="Hsuan-Ni Hsu">
-<link rel="canonical" href="https://sophie0730.github.io/categories/container/">
+<link rel="canonical" href="https://sophie0730.github.io/categories/kubernetes/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://sophie0730.github.io/categories/container/index.xml">
-<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/categories/container/">
+<link rel="alternate" type="application/rss+xml" href="https://sophie0730.github.io/categories/kubernetes/index.xml">
+<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/categories/kubernetes/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,16 +59,16 @@
 </noscript>
   
 
-<meta property="og:title" content="Container" />
+<meta property="og:title" content="Kubernetes" />
 <meta property="og:description" content="一些跟軟體工程相關的筆記區" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://sophie0730.github.io/categories/container/" />
+<meta property="og:url" content="https://sophie0730.github.io/categories/kubernetes/" />
 <meta property="og:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta property="og:site_name" content="Hsuan-Ni&#39;s blog" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
-<meta name="twitter:title" content="Container"/>
+<meta name="twitter:title" content="Kubernetes"/>
 <meta name="twitter:description" content="一些跟軟體工程相關的筆記區"/>
 
 </head>
@@ -146,8 +146,8 @@
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://sophie0730.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://sophie0730.github.io/categories/">Categories</a></div>
   <h1>
-    Container
-    <a href="/categories/container/index.xml" title="RSS" aria-label="RSS">
+    Kubernetes
+    <a href="/categories/kubernetes/index.xml" title="RSS" aria-label="RSS">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" height="23">
         <path d="M4 11a9 9 0 0 1 9 9" />
@@ -160,41 +160,18 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">動手用Golang實作一個container - 實作篇
+    <h2 class="entry-hint-parent">使用kubespray在OpenStack上搭建kubernetes cluster
     </h2>
   </header>
   <div class="entry-content">
-    <p>來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
-以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
-docker container run &lt;image-name&gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
-go run main.go run [cmd] 在這裡，我們會分別定義兩種function：
-run() : parent process要執行的function。負責創建child process及並配置其運行的環境（如namespace）。 child() : child process要執行的function。負責管理在container環境中，要如何運行用戶端所指定的命令。 而must()function則會作為error handler使用。
-func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：
-sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test....</p>
+    <p>先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。
+環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：
+IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host 2 2G Ubuntu 22.04 192.168.200.101 k8s-m0 Master Node - 0 4 4G Ubuntu 22.04 192.168.200.102 k8s-n0 Worker Node - 0 4 4G Ubuntu 22.04 192.168.200.103 k8s-n1 Worker Node - 1 4 4G Ubuntu 22.04 網路設定 準備兩張網卡：public與private。本實驗環境會將kubernetes cluster都放在內網，僅讓bastion host做對外的連線。
+在拿到openstack的帳號時，public網卡已經先幫我們建立好了，接下來要自己手動新增內網，並且能讓內網去連接到外網。在設定內網時，記得勾選「啟用DHCP」讓每個加進這個網路的VM都會被自動分配到唯一的ip位址。
+Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱：private-net 網路位址：192....</p>
   </div>
-  <footer class="entry-footer"><span title='2024-06-03 19:30:04 +0800 CST'>June 3, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
-  <a class="entry-link" aria-label="post link to 動手用Golang實作一個container - 實作篇" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">動手用Golang實作一個container - 概念篇
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言 開始第一份工作以後，真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂它幫我們做了什麼事情嗎？為了更了解容器化技術的底層原理，那不如就自己來做一個container看看好了！
-CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。
-什麼時候會需要用到container? 要回答這個問題，我們先來看看Docker官方對於container的解釋：
-A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
-一年前我還是個連docker都沒聽過的程式小白，當我想把網站部署到雲端上時，我的作法就是直接把github的程式碼clone到我的機器上，直接加裝任何程式碼所需要的套件及程式語言。現在回想起來，直接在機器上面運行程式碼實在有太多風險了：錯誤的程式碼可能造成系統損壞、資源過度消耗，甚至是運行的程式碼可能包含惡意程式而導致安全漏洞……除此之外，直接在機器上加裝一堆套件也讓環境變得又髒又亂，更別說在多人協作的開發場合中，建置環境時也很常發生「為什麼程式碼在你的電腦可以跑，我的不行？」的惱人狀況。
-基於以上痛點，我們再回頭來看container的定義：container是一個標準的軟體單位，它把程式碼以及所需要的環境與依賴項目給一起打包，讓整個應用程式可以快速地被搬運到另一個運算環境並且可靠地運行。有了container，我們不但可以避免直接運行程式碼的風險，開發環境與生產環境也都會變得乾淨許多。
-那麼，container是怎麼做到的？以上面的定義來看，container做到了環境打包、隔離，這兩個功能對應到的linux技術即是filesystem以及namespace，除此之外，host也需要去管理與限制container可以使用的資源，而這部分就屬於cgroups的範疇。因此，為了更了解container的底層原理，以下將會敘述這三個技術是怎麼成就container的。
-Namespace 當我們運行一個container時，會發現在container當中，我們只能看到在container裡運行的process，如果先前對container有一些認識，大概會知道container是使用命名空間來做到隔離。
-我們直接來看Linux manual page中對於Namespace的解釋：
-A namespace wraps a global system resource in an abstraction thatmakes it appear to the processes within the namespace that theyhave their own isolated instance of the global resource....</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-05-26 22:01:20 +0800 CST'>May 26, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
-  <a class="entry-link" aria-label="post link to 動手用Golang實作一個container - 概念篇" href="https://sophie0730.github.io/posts/2024/05/build_container_by_go/"></a>
+  <footer class="entry-footer"><span title='2024-06-22 23:30:04 +0800 CST'>June 22, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 使用kubespray在OpenStack上搭建kubernetes cluster" href="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/"></a>
 </article>
     </main>
     

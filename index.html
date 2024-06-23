@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.125.7"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.127.0"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="一些跟軟體工程相關的筆記區">
 <meta name="author" content="Hsuan-Ni Hsu">
 <link rel="canonical" href="https://sophie0730.github.io/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
@@ -158,12 +158,16 @@
         </ul>
     </nav>
 </header>
-<main class="main"><div class="profile">
-    <div class="profile_inner">
-        <img draggable="false" src="https://sophie0730.github.io/img/profile.jpg" alt="my image" title="my image"
-            height="120" width="120" />
-        <h1>Hsuan-Ni Hsu</h1>
-        <span>熱衷於學習Golang, Linux, Container, Kubernetes的後端工程師，也喜歡DevOps相關的技術議題。</span><div class="social-icons" >
+<main class="main"> 
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>Hi there 👋</h1>
+    </header>
+    <div class="entry-content">
+        Welcome to my blog
+    </div>
+    <footer class="entry-footer">
+        <div class="social-icons" >
     <a href="https://github.com/sophie0730" target="_blank" rel="noopener noreferrer me"
         title="Github">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -192,21 +196,102 @@
     </a>
 </div>
 
-        <div class="buttons">
-            <a class="button" href="posts" rel="noopener" title="Posts">
-                <span class="button-inner">
-                    Posts
-                </span>
-            </a>
-            <a class="button" href="tags" rel="noopener" title="Tags">
-                <span class="button-inner">
-                    Tags
-                </span>
-            </a>
-        </div>
-    </div>
-</div>
+    </footer>
+</article>
 
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">使用kubespray在OpenStack上搭建kubernetes cluster
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。
+環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：
+IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host 2 2G Ubuntu 22.04 192.168.200.101 k8s-m0 Master Node - 0 4 4G Ubuntu 22.04 192.168.200.102 k8s-n0 Worker Node - 0 4 4G Ubuntu 22.04 192.168.200.103 k8s-n1 Worker Node - 1 4 4G Ubuntu 22.04 網路設定 準備兩張網卡：public與private。本實驗環境會將kubernetes cluster都放在內網，僅讓bastion host做對外的連線。
+在拿到openstack的帳號時，public網卡已經先幫我們建立好了，接下來要自己手動新增內網，並且能讓內網去連接到外網。在設定內網時，記得勾選「啟用DHCP」讓每個加進這個網路的VM都會被自動分配到唯一的ip位址。
+Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱：private-net 網路位址：192....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-06-22 23:30:04 +0800 CST'>June 22, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 使用kubespray在OpenStack上搭建kubernetes cluster" href="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">動手用Golang實作一個container - 實作篇
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
+以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
+docker container run &lt;image-name&gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
+go run main.go run [cmd] 在這裡，我們會分別定義兩種function：
+run() : parent process要執行的function。負責創建child process及並配置其運行的環境（如namespace）。 child() : child process要執行的function。負責管理在container環境中，要如何運行用戶端所指定的命令。 而must()function則會作為error handler使用。
+func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：
+sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-06-03 19:30:04 +0800 CST'>June 3, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 動手用Golang實作一個container - 實作篇" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">動手用Golang實作一個container - 概念篇
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言 開始第一份工作以後，真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂它幫我們做了什麼事情嗎？為了更了解容器化技術的底層原理，那不如就自己來做一個container看看好了！
+CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。
+什麼時候會需要用到container? 要回答這個問題，我們先來看看Docker官方對於container的解釋：
+A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
+一年前我還是個連docker都沒聽過的程式小白，當我想把網站部署到雲端上時，我的作法就是直接把github的程式碼clone到我的機器上，直接加裝任何程式碼所需要的套件及程式語言。現在回想起來，直接在機器上面運行程式碼實在有太多風險了：錯誤的程式碼可能造成系統損壞、資源過度消耗，甚至是運行的程式碼可能包含惡意程式而導致安全漏洞……除此之外，直接在機器上加裝一堆套件也讓環境變得又髒又亂，更別說在多人協作的開發場合中，建置環境時也很常發生「為什麼程式碼在你的電腦可以跑，我的不行？」的惱人狀況。
+基於以上痛點，我們再回頭來看container的定義：container是一個標準的軟體單位，它把程式碼以及所需要的環境與依賴項目給一起打包，讓整個應用程式可以快速地被搬運到另一個運算環境並且可靠地運行。有了container，我們不但可以避免直接運行程式碼的風險，開發環境與生產環境也都會變得乾淨許多。
+那麼，container是怎麼做到的？以上面的定義來看，container做到了環境打包、隔離，這兩個功能對應到的linux技術即是filesystem以及namespace，除此之外，host也需要去管理與限制container可以使用的資源，而這部分就屬於cgroups的範疇。因此，為了更了解container的底層原理，以下將會敘述這三個技術是怎麼成就container的。
+Namespace 當我們運行一個container時，會發現在container當中，我們只能看到在container裡運行的process，如果先前對container有一些認識，大概會知道container是使用命名空間來做到隔離。
+我們直接來看Linux manual page中對於Namespace的解釋：
+A namespace wraps a global system resource in an abstraction thatmakes it appear to the processes within the namespace that theyhave their own isolated instance of the global resource....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-05-26 22:01:20 +0800 CST'>May 26, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 動手用Golang實作一個container - 概念篇" href="https://sophie0730.github.io/posts/2024/05/build_container_by_go/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Golang中的Graceful Shutdown
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言 最近在學習Golang，在架設http server時，發現Golang在v1.8推出了一個叫做Graceful Shutdown的功能，說來慚愧，先前寫的幾個小專案雖然也都是http server，卻沒有使用過像這樣的功能，所以用一篇小文章來記錄一下。
+什麼是Graceful Shutdown? 先想像一下今天已經有一個已經上線的電商網站服務，使用者會在這個網站上面瀏覽、購買商品，當這個網站要升版時，服務就必須暫停 — — 意思是，所有還在網站上進行的交易、連線都會被中斷。若是像這樣強制關閉服務，待下一次服務啟動時，我們可能就會發現資料上會有預期外的錯誤與差異。
+Graceful Shutdown直譯來說就是「優雅地關機」，這個意思是，當伺服器收到終止的指令後，如果手上還有正在執行的process，它會先處理完，之後才會真的關閉服務，這麼作不僅可以保障資料的一致與完整性，我們也不需要害怕突然中止程式可能會導致非預期的錯誤。
+普通的HTTP server 以下我會先介紹「沒有」Graceful Shutdown機制且強制關閉服務的觀察現象，在這邊，HTTP server的實作會透過Gin framework來實現。
+package main import ( &#34;log&#34; &#34;net/http&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { log.Println(&#34;starting server...&#34;) router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(10 * time.Second) c.String(http.StatusOK, &#34;hello there&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } srv.ListenAndServe() } 根據以上設計，當我們前往localhost:8080後，等十秒會收到從server回傳的字串；若我們在這十秒內強制中止server，client連線也就會跟著被強制中斷，導致終端機噴出以下錯誤：
+* Empty reply from server * Closing connection 0 curl: (52) Empty reply from server Graceful Shutdown in HTTP server 前一次實驗的錯誤是因為當我們結束server服務時，還有一個client連線還沒有收到預期的回覆，卻被強制中斷連線所導致的錯誤。...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-05-25 21:30:04 +0800 CST'>May 25, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to Golang中的Graceful Shutdown" href="https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">2024 SRE Conference Record (1)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>iTHOME自2022年舉辦第一場SRE Conference，今年已是第三屆，而這也是我從AppWorks School後端班畢業後參加的第一場技術研討會。做為一個剛從後端領域跨足到SRE的新手來說，此行不僅看到各個公司在導入SRE以及kubernetes的評估與考量之外，透過工作坊的動手做，了解了kubernetes絕對不是僅止於撰寫yaml檔而已。感嘆著這條路的水果然很深之外，更因為還有許多地方可以探索而感到非常興奮。
+此篇文章主要是參加幾場演講下來的速記，因為有些演講的筆記較多，可能會分為兩到三篇來撰寫，同時也會以每場演講作為主題劃分。
+Data Architecture and Analysis about OpenTelemetry Observability 講者：蘇揮原 (Mars), TrendMicro
+講者一開始先從趨勢科技的自有產品 - Vision One作為引言，當產品從&#34;Security Tool&#34;逐漸壯大成一個&#34;Cybersecurity Platform&#34;時，那我們該怎麼去管理這些服務？我們可以從下面那張圖看到，Vision One透過單一的平台服務來偵測、預防與應對來自不同地方的資安攻擊與風險，並搭配自動化與人工智慧來落實全方位的資安管理。
+圖片擷取自趨勢科技官方網站：https://www.trendmicro.com/zh_tw/business/products/one-platform.html 那麼，有這麼多的服務都運行在單一的平台上面，勢必得做好管理。講者在這裡提到了兩個名詞：Proactive monitoring以及Observability。我會佔用以下小小的篇幅來大致講述這兩個名詞概念。
+許多針對監控相關的產品網站都提到了proactive monitoring的概念，而我在Datadog官方網站上找到proactive monitoring的定義為： Proactive monitoring is key to flagging potential issues with your applications and infrastructure early, enabling you to respond quickly and reduce downtime.
+意思即是，主動監控是及早發現應用程式與基礎架構潛在問題的關鍵，它幫助我們能快速針對這些問題做出反應，減少server downtime。
+在這裡講者也針對proactive monitoring拋出了一個概念：在用戶發現前先發現問題。
+另一方面，與Proactive Monitoring相互輝映的名詞及是Observebility，以我自己的邏輯來看，我們已經了解到了Proactive Monitoring的好處，那我們該怎麼去做到實際上的監控？第一，我們的系統必須具備可以被觀測(Observable)的能力；再來，透過這些觀測到的資訊，它應該要能幫助我們了解目前系統或者服務的狀態，且我們能有效利用這些資訊來做出適當的判斷。
+在這裡也一併附上CNCF(Cloud Native Computing Foundation)對於Observability的解釋：
+Observability is a system property that defines the degree to which the system can generate actionable insights....</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-05-12 14:30:04 +0800 CST'>May 12, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 2024 SRE Conference Record (1)" href="https://sophie0730.github.io/posts/2024/05/sre_conference_1/"></a>
+</article>
     </main>
     
 <footer class="footer">

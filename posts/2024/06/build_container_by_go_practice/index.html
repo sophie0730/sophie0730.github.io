@@ -16,7 +16,7 @@ func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;
 sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test.">
 <meta name="author" content="Hsuan-Ni Hsu">
 <link rel="canonical" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
@@ -258,9 +258,9 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
 </span></span><span class="line"><span class="cl"> <span class="p">}</span>
 </span></span></code></pre></div><hr>
 <p>這邊還蠻想提一下<code>os.Args</code>這個指令。<code>os.Args</code> 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出<code>os.Args</code>，他會長的像這樣：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sophie@Sophie-Desktop:~/go-container$ go run test.go run <span class="nb">echo</span> <span class="s1">&#39;hi&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="o">[</span>/tmp/go-build3547203082/b001/exe/test run <span class="nb">echo</span> hi<span class="o">]</span>
-</span></span></code></pre></div><p>第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼<code>go run test.go</code> 不但沒有被儲存在os.Args中，反而還多了一串類似像檔案路徑的東西？</p>
+<pre tabindex="0"><code>sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39;
+[/tmp/go-build3547203082/b001/exe/test run echo hi]
+</code></pre><p>第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼<code>go run test.go</code> 不但沒有被儲存在os.Args中，反而還多了一串類似像檔案路徑的東西？</p>
 <p>這是因為當我們使用<code>go run</code>來運行程式時，他會先編譯我們指定的程式碼檔案，創建一個臨時的執行檔，它實際運行的其實是這個臨時創建出來的執行檔。</p>
 <p>因此，這也能說明為什麼<code>go run test.go</code>直接被這個臨時執行檔的路徑給取代了。基於這個架構，我們使用os.Args[1]的元素就能判斷是否為執行container的命令行。</p>
 <hr>
@@ -306,8 +306,8 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
 </p>
 <p>退出container之後，在host觀察hostname，會發現hostname並沒有被更動！UTS namespace的確有發揮作用。
 <img loading="lazy" src="/img/2024/06/hostname.png" alt="hostname"  />
-
-到這裡，一個簡易版的container（看似）就完成了。</p>
+</p>
+<p>到這裡，一個簡易版的container（看似）就完成了。</p>
 <blockquote>
 <p>編按：這邊要提醒讀者，這裡的hostname之所以能做到隔離，是因為在前面我們加上了UTS namespace <code>syscall.CLONE_NEWUTS</code>，在這次實驗中，我們只有加了PID和UTS這兩個比較好觀察到的namespace，因此只能在Hostname以及PID的部分觀察到隔離的效果！</p>
 </blockquote>
@@ -406,6 +406,11 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
       <li><a href="https://sophie0730.github.io/tags/container/">Container</a></li>
     </ul>
 <nav class="paginav">
+  <a class="prev" href="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>使用kubespray在OpenStack上搭建kubernetes cluster</span>
+  </a>
   <a class="next" href="https://sophie0730.github.io/posts/2024/05/build_container_by_go/">
     <span class="title">Next »</span>
     <br>
@@ -553,6 +558,53 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

@@ -9,10 +9,21 @@
       <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.125.7</generator>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Jun 2024 19:30:04 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2024 23:30:04 +0800</lastBuildDate>
     <atom:link href="https://sophie0730.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用kubespray在OpenStack上搭建kubernetes cluster</title>
+      <link>https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/</link>
+      <pubDate>Sat, 22 Jun 2024 23:30:04 +0800</pubDate>
+      <guid>https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/</guid>
+      <description>先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。
+環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：
+IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host 2 2G Ubuntu 22.04 192.168.200.101 k8s-m0 Master Node - 0 4 4G Ubuntu 22.04 192.168.200.102 k8s-n0 Worker Node - 0 4 4G Ubuntu 22.04 192.168.200.103 k8s-n1 Worker Node - 1 4 4G Ubuntu 22.04 網路設定 準備兩張網卡：public與private。本實驗環境會將kubernetes cluster都放在內網，僅讓bastion host做對外的連線。
+在拿到openstack的帳號時，public網卡已經先幫我們建立好了，接下來要自己手動新增內網，並且能讓內網去連接到外網。在設定內網時，記得勾選「啟用DHCP」讓每個加進這個網路的VM都會被自動分配到唯一的ip位址。
+Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱：private-net 網路位址：192.</description>
+    </item>
     <item>
       <title>動手用Golang實作一個container - 實作篇</title>
       <link>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</link>
