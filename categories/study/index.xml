@@ -2,27 +2,43 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Study on Hsuan-Ni&#39;s blog</title>
-    <link>http://localhost:1313/categories/study/</link>
+    <link>https://sophie0730.github.io/categories/study/</link>
     <description>Recent content in Study on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 03 Jul 2024 14:30:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sophie0730.github.io/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2024 06月份讀書狀態回顧</title>
-      <link>http://localhost:1313/posts/2024/07/2024_6_review/</link>
+      <link>https://sophie0730.github.io/posts/2024/07/2024_6_review/</link>
       <pubDate>Wed, 03 Jul 2024 14:30:04 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/07/2024_6_review/</guid>
+      <guid>https://sophie0730.github.io/posts/2024/07/2024_6_review/</guid>
       <description>前陣子發現一直有在關注的部落格作者，會在自己的部落格分享每個月的學習回顧，覺得這是很好的自省方式，所以也想要跟著做。
-本月重點 這個月主要專注在準備AWS SAA-C03證照，中間有跑去CNTUG申請LAB來試著架架看Kubernetes，透過Helm架設Prometheus+Grafana來監控cluster上面運行的服務，也有寫一點Python，刷leetcode防止失智。
+本月重點 這個月主要專注準備AWS SAA-C03證照，中間有跑去CNTUG申請LAB來試著架架看Kubernetes，透過Helm架設Prometheus+Grafana來監控cluster上面運行的服務，也有寫一點Python，刷leetcode防止失智。
 必須要檢討的是，這個月除了證照以外，並沒有訂定明確的讀書計畫，可能也跟我這個月其實很迷惘，到底要往開發還是往SRE走有關，就變成甚麼都碰一點。所以整個六月只有考到證照這件事算是有收穫。
-AWS Solutions Architect - Associate 這張證照總共花費三周時間進行準備。
-每日進度細項 </description>
+AWS Solutions Architect - Associate 這張證照總共花費三周時間進行準備。我參考的是Udemy上的知名課程 Ultimate AWS Certified Solutions Architect Associate SAA-C03 搭配EXAMTOPICS的考古題做準備。
+大約花了一周時間把Udemy課程上完，第二周開始邊刷題邊檢討，第三周開始模擬考試情境，每次連續寫65題並計時、算分，再仔細檢討題目，並且與之前學習到的觀念做對照與補充。
+在筆記部份我使用Heptabase，這個筆記軟體之前就有聽聞，但感覺操作起來蠻複雜的就一直沒有想要使用，直到看到AppWorks School同學的推坑文，實際使用之後也算滿意，非常適合準備SAA這種知識比較零散，但解題時又需要組織這些零散知識的考試。
+體感上來說，SAA與其說是考你各個服務的特性，不如比較像是考你「要如何貼合客戶需求，運用AWS服務設計架構，解決當前問題」，因此我覺得雖然很多人說刷題就好，但寫題目看答案的時候還是要問自己「為什麼這個正確答案要這樣設計？」因為實際進考場後真正有寫到重複的考古題並不多，但觀念其實都是類似的。
+儘管考過證照，但自認還是缺乏實作上的經驗，剛好下個月會有一些實做專案的機會，如果把專案丟到AWS上或許能有更多的收穫。
+下月重點 其實以時間點來看已經是這個月了&amp;hellip;因為面試都集中在七月前半段，因此安排如下
+七月中前：
+面試作業，準備面試 資料結構演算法(Binary Tree, Graphs, Backtracking, DP) 七月中後：
+missing semester of your CS education(看完) 清大計算機網路概論(有開始就好) 每日進度細項 六月份共有6天沒有讀書。
+6/1 參加Docker Workshop，回家後整理筆記
+6/2 使用Golang實作簡單的container，並發表部落格文章
+6/3 Golang web server架設+撰寫部落格文章
+6/4 Golang web server practice
+6/5 AWS EC2
+6/6 AWS ELB &amp;amp; ASG
+6/7 端午節家族旅遊
+6/8 端午節家族旅遊
+6/9 端午節家族旅遊</description>
     </item>
   </channel>
 </rss>
