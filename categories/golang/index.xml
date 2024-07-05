@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Golang on Hsuan-Ni&#39;s blog</title>
-    <link>https://sophie0730.github.io/categories/golang/</link>
+    <link>http://localhost:1313/categories/golang/</link>
     <description>Recent content in Golang on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 25 May 2024 21:30:04 +0800</lastBuildDate>
-    <atom:link href="https://sophie0730.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang中的Graceful Shutdown</title>
-      <link>https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/</link>
+      <link>http://localhost:1313/posts/2024/05/go_graceful_shotdown/</link>
       <pubDate>Sat, 25 May 2024 21:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/</guid>
+      <guid>http://localhost:1313/posts/2024/05/go_graceful_shotdown/</guid>
       <description>前言 最近在學習Golang，在架設http server時，發現Golang在v1.8推出了一個叫做Graceful Shutdown的功能，說來慚愧，先前寫的幾個小專案雖然也都是http server，卻沒有使用過像這樣的功能，所以用一篇小文章來記錄一下。
 什麼是Graceful Shutdown? 先想像一下今天已經有一個已經上線的電商網站服務，使用者會在這個網站上面瀏覽、購買商品，當這個網站要升版時，服務就必須暫停 — — 意思是，所有還在網站上進行的交易、連線都會被中斷。若是像這樣強制關閉服務，待下一次服務啟動時，我們可能就會發現資料上會有預期外的錯誤與差異。
 Graceful Shutdown直譯來說就是「優雅地關機」，這個意思是，當伺服器收到終止的指令後，如果手上還有正在執行的process，它會先處理完，之後才會真的關閉服務，這麼作不僅可以保障資料的一致與完整性，我們也不需要害怕突然中止程式可能會導致非預期的錯誤。

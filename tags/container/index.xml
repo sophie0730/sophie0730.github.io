@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Container on Hsuan-Ni&#39;s blog</title>
-    <link>https://sophie0730.github.io/tags/container/</link>
+    <link>http://localhost:1313/tags/container/</link>
     <description>Recent content in Container on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
     <lastBuildDate>Mon, 03 Jun 2024 19:30:04 +0800</lastBuildDate>
-    <atom:link href="https://sophie0730.github.io/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/container/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>動手用Golang實作一個container - 實作篇</title>
-      <link>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</link>
+      <link>http://localhost:1313/posts/2024/06/build_container_by_go_practice/</link>
       <pubDate>Mon, 03 Jun 2024 19:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</guid>
+      <guid>http://localhost:1313/posts/2024/06/build_container_by_go_practice/</guid>
       <description>來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
 以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
 docker container run &amp;lt;image-name&amp;gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
@@ -28,9 +28,9 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &amp;#39;hi&amp;#3
     </item>
     <item>
       <title>動手用Golang實作一個container - 概念篇</title>
-      <link>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</link>
+      <link>http://localhost:1313/posts/2024/05/build_container_by_go/</link>
       <pubDate>Sun, 26 May 2024 22:01:20 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</guid>
+      <guid>http://localhost:1313/posts/2024/05/build_container_by_go/</guid>
       <description>前言 開始第一份工作以後，真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂它幫我們做了什麼事情嗎？為了更了解容器化技術的底層原理，那不如就自己來做一個container看看好了！
 CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。
 什麼時候會需要用到container? 要回答這個問題，我們先來看看Docker官方對於container的解釋：

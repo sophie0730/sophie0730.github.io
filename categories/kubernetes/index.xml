@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Kubernetes on Hsuan-Ni&#39;s blog</title>
-    <link>https://sophie0730.github.io/categories/kubernetes/</link>
+    <link>http://localhost:1313/categories/kubernetes/</link>
     <description>Recent content in Kubernetes on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
     <lastBuildDate>Sat, 22 Jun 2024 23:30:04 +0800</lastBuildDate>
-    <atom:link href="https://sophie0730.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用kubespray在OpenStack上搭建kubernetes cluster</title>
-      <link>https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/</link>
+      <link>http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/</link>
       <pubDate>Sat, 22 Jun 2024 23:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/</guid>
+      <guid>http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/</guid>
       <description>先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。
 環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：
 IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host 2 2G Ubuntu 22.04 192.168.200.101 k8s-m0 Master Node - 0 4 4G Ubuntu 22.04 192.168.200.102 k8s-n0 Worker Node - 0 4 4G Ubuntu 22.04 192.168.200.103 k8s-n1 Worker Node - 1 4 4G Ubuntu 22.04 網路設定 準備兩張網卡：public與private。本實驗環境會將kubernetes cluster都放在內網，僅讓bastion host做對外的連線。

@@ -2,22 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Hsuan-Ni&#39;s blog</title>
-    <link>https://sophie0730.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Jun 2024 23:30:04 +0800</lastBuildDate>
-    <atom:link href="https://sophie0730.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Jul 2024 14:30:04 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2024 06月份讀書狀態回顧</title>
+      <link>http://localhost:1313/posts/2024/07/2024_6_review/</link>
+      <pubDate>Wed, 03 Jul 2024 14:30:04 +0800</pubDate>
+      <guid>http://localhost:1313/posts/2024/07/2024_6_review/</guid>
+      <description>前陣子發現一直有在關注的部落格作者，會在自己的部落格分享每個月的學習回顧，覺得這是很好的自省方式，所以也想要跟著做。
+本月重點 這個月主要專注準備AWS SAA-C03證照，中間有跑去CNTUG申請LAB來試著架架看Kubernetes，透過Helm架設Prometheus+Grafana來監控cluster上面運行的服務，也有寫一點Python，刷leetcode防止失智。
+必須要檢討的是，這個月除了證照以外，並沒有訂定明確的讀書計畫，可能也跟我這個月其實很迷惘，到底要往開發還是往SRE走有關，就變成甚麼都碰一點。所以整個六月只有考到證照這件事算是有收穫。
+AWS Solutions Architect - Associate 這張證照總共花費三周時間進行準備。我參考的是Udemy上的知名課程 Ultimate AWS Certified Solutions Architect Associate SAA-C03 搭配EXAMTOPICS的考古題做準備。
+大約花了一周時間把Udemy課程上完，第二周開始邊刷題邊檢討，第三周開始模擬考試情境，每次連續寫65題並計時、算分，再仔細檢討題目，並且與之前學習到的觀念做對照與補充。
+在筆記部份我使用Heptabase，這個筆記軟體之前就有聽聞，但感覺操作起來蠻複雜的就一直沒有想要使用，直到看到AppWorks School同學的推坑文，實際使用之後也算滿意，非常適合準備SAA這種知識比較零散，但解題時又需要組織這些零散知識的考試。
+體感上來說，SAA與其說是考你各個服務的特性，不如比較像是考你「要如何貼合客戶需求，運用AWS服務設計架構，解決當前問題」，因此我覺得雖然很多人說刷題就好，但寫題目看答案的時候還是要問自己「為什麼這個正確答案要這樣設計？」因為實際進考場後真正有寫到重複的考古題並不多，但觀念其實都是類似的。
+儘管考過證照，但自認還是缺乏實作上的經驗，剛好下個月會有一些實做專案的機會，如果把專案丟到AWS上或許能有更多的收穫。
+下月重點 其實以時間點來看已經是這個月了&amp;hellip;因為面試都集中在七月前半段，因此安排如下：
+七月中前：
+面試作業，準備面試 資料結構演算法(Binary Tree, Graphs, Backtracking, DP) 七月中後：
+missing semester of your CS education(看完) 清大計算機網路概論(有開始就好) 每日進度細項 六月份共有6天沒有讀書。
+6/1 參加Docker Workshop，回家後整理筆記
+6/2 使用Golang實作簡單的container，並發表部落格文章
+6/3 Golang web server架設+撰寫部落格文章
+6/4 Golang web server practice
+6/5 AWS EC2
+6/6 AWS ELB &amp;amp; ASG
+6/7 端午節家族旅遊
+6/8 端午節家族旅遊
+6/9 端午節家族旅遊</description>
+    </item>
     <item>
       <title>使用kubespray在OpenStack上搭建kubernetes cluster</title>
-      <link>https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/</link>
+      <link>http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/</link>
       <pubDate>Sat, 22 Jun 2024 23:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/</guid>
+      <guid>http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/</guid>
       <description>先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。
 環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：
 IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host 2 2G Ubuntu 22.04 192.168.200.101 k8s-m0 Master Node - 0 4 4G Ubuntu 22.04 192.168.200.102 k8s-n0 Worker Node - 0 4 4G Ubuntu 22.04 192.168.200.103 k8s-n1 Worker Node - 1 4 4G Ubuntu 22.04 網路設定 準備兩張網卡：public與private。本實驗環境會將kubernetes cluster都放在內網，僅讓bastion host做對外的連線。
@@ -26,9 +53,9 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
     </item>
     <item>
       <title>動手用Golang實作一個container - 實作篇</title>
-      <link>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</link>
+      <link>http://localhost:1313/posts/2024/06/build_container_by_go_practice/</link>
       <pubDate>Mon, 03 Jun 2024 19:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/</guid>
+      <guid>http://localhost:1313/posts/2024/06/build_container_by_go_practice/</guid>
       <description>來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
 以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
 docker container run &amp;lt;image-name&amp;gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
@@ -39,9 +66,9 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &amp;#39;hi&amp;#3
     </item>
     <item>
       <title>動手用Golang實作一個container - 概念篇</title>
-      <link>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</link>
+      <link>http://localhost:1313/posts/2024/05/build_container_by_go/</link>
       <pubDate>Sun, 26 May 2024 22:01:20 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/05/build_container_by_go/</guid>
+      <guid>http://localhost:1313/posts/2024/05/build_container_by_go/</guid>
       <description>前言 開始第一份工作以後，真切體會到容器化技術的強大與方便之處，工作中處處離不開container，但自己又真的懂它幫我們做了什麼事情嗎？為了更了解容器化技術的底層原理，那不如就自己來做一個container看看好了！
 CNCF的開發專案大多由Golang寫成，同時做為一個語法簡潔、易讀、擁有強大併發處理能力的語言，我相信使用它來建構容器等系統工具是個好選擇，因此本文將會以Golang作為程式碼的範例。
 什麼時候會需要用到container? 要回答這個問題，我們先來看看Docker官方對於container的解釋：
@@ -55,9 +82,9 @@ A namespace wraps a global system resource in an abstraction thatmakes it appear
     </item>
     <item>
       <title>Golang中的Graceful Shutdown</title>
-      <link>https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/</link>
+      <link>http://localhost:1313/posts/2024/05/go_graceful_shotdown/</link>
       <pubDate>Sat, 25 May 2024 21:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/</guid>
+      <guid>http://localhost:1313/posts/2024/05/go_graceful_shotdown/</guid>
       <description>前言 最近在學習Golang，在架設http server時，發現Golang在v1.8推出了一個叫做Graceful Shutdown的功能，說來慚愧，先前寫的幾個小專案雖然也都是http server，卻沒有使用過像這樣的功能，所以用一篇小文章來記錄一下。
 什麼是Graceful Shutdown? 先想像一下今天已經有一個已經上線的電商網站服務，使用者會在這個網站上面瀏覽、購買商品，當這個網站要升版時，服務就必須暫停 — — 意思是，所有還在網站上進行的交易、連線都會被中斷。若是像這樣強制關閉服務，待下一次服務啟動時，我們可能就會發現資料上會有預期外的錯誤與差異。
 Graceful Shutdown直譯來說就是「優雅地關機」，這個意思是，當伺服器收到終止的指令後，如果手上還有正在執行的process，它會先處理完，之後才會真的關閉服務，這麼作不僅可以保障資料的一致與完整性，我們也不需要害怕突然中止程式可能會導致非預期的錯誤。
@@ -67,9 +94,9 @@ package main import ( &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;
     </item>
     <item>
       <title>2024 SRE Conference Record (1)</title>
-      <link>https://sophie0730.github.io/posts/2024/05/sre_conference_1/</link>
+      <link>http://localhost:1313/posts/2024/05/sre_conference_1/</link>
       <pubDate>Sun, 12 May 2024 14:30:04 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/05/sre_conference_1/</guid>
+      <guid>http://localhost:1313/posts/2024/05/sre_conference_1/</guid>
       <description>iTHOME自2022年舉辦第一場SRE Conference，今年已是第三屆，而這也是我從AppWorks School後端班畢業後參加的第一場技術研討會。做為一個剛從後端領域跨足到SRE的新手來說，此行不僅看到各個公司在導入SRE以及kubernetes的評估與考量之外，透過工作坊的動手做，了解了kubernetes絕對不是僅止於撰寫yaml檔而已。感嘆著這條路的水果然很深之外，更因為還有許多地方可以探索而感到非常興奮。
 此篇文章主要是參加幾場演講下來的速記，因為有些演講的筆記較多，可能會分為兩到三篇來撰寫，同時也會以每場演講作為主題劃分。
 Data Architecture and Analysis about OpenTelemetry Observability 講者：蘇揮原 (Mars), TrendMicro
