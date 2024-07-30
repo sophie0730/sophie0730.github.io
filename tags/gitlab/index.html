@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Golang | Hsuan-Ni&#39;s blog</title>
+<title>GitLab | Hsuan-Ni&#39;s blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="一些跟軟體工程相關的筆記區">
 <meta name="author" content="Hsuan-Ni Hsu">
-<link rel="canonical" href="https://sophie0730.github.io/tags/golang/">
+<link rel="canonical" href="https://sophie0730.github.io/tags/gitlab/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://sophie0730.github.io/tags/golang/index.xml">
-<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/tags/golang/">
+<link rel="alternate" type="application/rss+xml" href="https://sophie0730.github.io/tags/gitlab/index.xml">
+<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/tags/gitlab/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,16 +59,16 @@
 </noscript>
   
 
-<meta property="og:title" content="Golang" />
+<meta property="og:title" content="GitLab" />
 <meta property="og:description" content="一些跟軟體工程相關的筆記區" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://sophie0730.github.io/tags/golang/" />
+<meta property="og:url" content="https://sophie0730.github.io/tags/gitlab/" />
 <meta property="og:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta property="og:site_name" content="Hsuan-Ni&#39;s blog" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
-<meta name="twitter:title" content="Golang"/>
+<meta name="twitter:title" content="GitLab"/>
 <meta name="twitter:description" content="一些跟軟體工程相關的筆記區"/>
 
 </head>
@@ -151,8 +151,8 @@
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="https://sophie0730.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://sophie0730.github.io/tags/">Tags</a></div>
   <h1>
-    Golang
-    <a href="/tags/golang/index.xml" title="RSS" aria-label="RSS">
+    GitLab
+    <a href="/tags/gitlab/index.xml" title="RSS" aria-label="RSS">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" height="23">
         <path d="M4 11a9 9 0 0 1 9 9" />
@@ -165,37 +165,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">動手用Golang實作一個container - 實作篇
+    <h2 class="entry-hint-parent">自架GitLab Runner來執行單元測試
     </h2>
   </header>
   <div class="entry-content">
-    <p>來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
-以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
-docker container run &lt;image-name&gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
-go run main.go run [cmd] 在這裡，我們會分別定義兩種function：
-run() : parent process要執行的function。負責創建child process及並配置其運行的環境（如namespace）。 child() : child process要執行的function。負責管理在container環境中，要如何運行用戶端所指定的命令。 而must()function則會作為error handler使用。
-func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：
-sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test....</p>
+    <p>接下來即將進入的新公司與職位，會需要大量與GitLab CI接觸，為了做好準備，這幾天花了些時間自己跑了一遍CI流程。
+GitLab CI Process 根據GitLab官方文件所述，所有CI/CD任務的執行都必須仰賴gitlab-ci.yml這個文件：
+To use GitLab CI/CD, you start with a .gitlab-ci.yml file at the root of your project. This file specifies the stages, jobs, and scripts to be executed during your CI/CD pipeline.
+當定義好gitlab-ci.yml後，整個GitLab執行CI/CD的流程就會變成：
+當指定分支的程式碼更新(commit or push or pull request) GitLab根據gitlab-ci.yml的定義，同步平行地觸發job (編按：在沒有任何其他設定之下，job都是平行執行的，除非另外在yml設定stage或者needs參數) GitLab server會去檢查每個job所指名的Runner，並把job分配給適當的Runner執行 Runner執行後的結果(CI Logs)會回傳到GitLab server，顯示於Pipeline上 在本篇文章中，會逐一介紹GitLab中Runner的種類，並且嘗試自定義Runner，並在上面運行單元測試。
+GitLab Runner 當GitLab在運行gitlab-ci.yml中定義的Jobs時，實際上是在GitLab Runner上運作的。在這裡，Runner又能根據作用範圍分作三種類型，分別是：
+Shared Runner: 在該GitLab server下的所有group或者project都能夠使用。當我們建立project時，系統會自動產生Shared Runner，可以用來處理無標籤(tag)的任務。 Group Runner: 只有在該group下的所有project可以使用。 Specific Runner: 只有在特定的project下可以被使用。本次會使用Specific Runner作為實驗範例。 Executor 這時，Runner會根據我們選擇的Executor決定要採用何種方式與工作環境來完成CI Job。換言之，一個Runner可以被允許擁有多個executor，讓一個Job能運行在多種環境之中。...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-06-03 19:30:04 +0800 CST'>June 3, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
-  <a class="entry-link" aria-label="post link to 動手用Golang實作一個container - 實作篇" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/"></a>
-</article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Golang中的Graceful Shutdown
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言 最近在學習Golang，在架設http server時，發現Golang在v1.8推出了一個叫做Graceful Shutdown的功能，說來慚愧，先前寫的幾個小專案雖然也都是http server，卻沒有使用過像這樣的功能，所以用一篇小文章來記錄一下。
-什麼是Graceful Shutdown? 先想像一下今天已經有一個已經上線的電商網站服務，使用者會在這個網站上面瀏覽、購買商品，當這個網站要升版時，服務就必須暫停 — — 意思是，所有還在網站上進行的交易、連線都會被中斷。若是像這樣強制關閉服務，待下一次服務啟動時，我們可能就會發現資料上會有預期外的錯誤與差異。
-Graceful Shutdown直譯來說就是「優雅地關機」，這個意思是，當伺服器收到終止的指令後，如果手上還有正在執行的process，它會先處理完，之後才會真的關閉服務，這麼作不僅可以保障資料的一致與完整性，我們也不需要害怕突然中止程式可能會導致非預期的錯誤。
-普通的HTTP server 以下我會先介紹「沒有」Graceful Shutdown機制且強制關閉服務的觀察現象，在這邊，HTTP server的實作會透過Gin framework來實現。
-package main import ( &#34;log&#34; &#34;net/http&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { log.Println(&#34;starting server...&#34;) router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(10 * time.Second) c.String(http.StatusOK, &#34;hello there&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } srv.ListenAndServe() } 根據以上設計，當我們前往localhost:8080後，等十秒會收到從server回傳的字串；若我們在這十秒內強制中止server，client連線也就會跟著被強制中斷，導致終端機噴出以下錯誤：
-* Empty reply from server * Closing connection 0 curl: (52) Empty reply from server Graceful Shutdown in HTTP server 前一次實驗的錯誤是因為當我們結束server服務時，還有一個client連線還沒有收到預期的回覆，卻被強制中斷連線所導致的錯誤。...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-05-25 21:30:04 +0800 CST'>May 25, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
-  <a class="entry-link" aria-label="post link to Golang中的Graceful Shutdown" href="https://sophie0730.github.io/posts/2024/05/go_graceful_shotdown/"></a>
+  <footer class="entry-footer"><span title='2024-07-30 07:13:00 +0800 CST'>July 30, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 自架GitLab Runner來執行單元測試" href="https://sophie0730.github.io/posts/2024/07/gitlab-ci/"></a>
 </article>
     </main>
     

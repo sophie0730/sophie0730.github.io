@@ -11,8 +11,22 @@
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Jun 2024 23:30:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jul 2024 07:13:00 +0800</lastBuildDate>
     <atom:link href="https://sophie0730.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CICD</title>
+      <link>https://sophie0730.github.io/tags/cicd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://sophie0730.github.io/tags/cicd/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GitLab</title>
+      <link>https://sophie0730.github.io/tags/gitlab/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://sophie0730.github.io/tags/gitlab/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Kubernetes</title>
       <link>https://sophie0730.github.io/tags/kubernetes/</link>

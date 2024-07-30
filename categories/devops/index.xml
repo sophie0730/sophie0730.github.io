@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>DevOps on Hsuan-Ni&#39;s blog</title>
+    <link>https://sophie0730.github.io/categories/devops/</link>
+    <description>Recent content in DevOps on Hsuan-Ni&#39;s blog</description>
+    <image>
+      <title>Hsuan-Ni&#39;s blog</title>
+      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 30 Jul 2024 07:13:00 +0800</lastBuildDate>
+    <atom:link href="https://sophie0730.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>自架GitLab Runner來執行單元測試</title>
+      <link>https://sophie0730.github.io/posts/2024/07/gitlab-ci/</link>
+      <pubDate>Tue, 30 Jul 2024 07:13:00 +0800</pubDate>
+      <guid>https://sophie0730.github.io/posts/2024/07/gitlab-ci/</guid>
+      <description>接下來即將進入的新公司與職位，會需要大量與GitLab CI接觸，為了做好準備，這幾天花了些時間自己跑了一遍CI流程。
+GitLab CI Process 根據GitLab官方文件所述，所有CI/CD任務的執行都必須仰賴gitlab-ci.yml這個文件：
+To use GitLab CI/CD, you start with a .gitlab-ci.yml file at the root of your project. This file specifies the stages, jobs, and scripts to be executed during your CI/CD pipeline.
+當定義好gitlab-ci.yml後，整個GitLab執行CI/CD的流程就會變成：
+當指定分支的程式碼更新(commit or push or pull request) GitLab根據gitlab-ci.yml的定義，同步平行地觸發job (編按：在沒有任何其他設定之下，job都是平行執行的，除非另外在yml設定stage或者needs參數) GitLab server會去檢查每個job所指名的Runner，並把job分配給適當的Runner執行 Runner執行後的結果(CI Logs)會回傳到GitLab server，顯示於Pipeline上 在本篇文章中，會逐一介紹GitLab中Runner的種類，並且嘗試自定義Runner，並在上面運行單元測試。
+GitLab Runner 當GitLab在運行gitlab-ci.yml中定義的Jobs時，實際上是在GitLab Runner上運作的。在這裡，Runner又能根據作用範圍分作三種類型，分別是：
+Shared Runner: 在該GitLab server下的所有group或者project都能夠使用。當我們建立project時，系統會自動產生Shared Runner，可以用來處理無標籤(tag)的任務。 Group Runner: 只有在該group下的所有project可以使用。 Specific Runner: 只有在特定的project下可以被使用。本次會使用Specific Runner作為實驗範例。 Executor 這時，Runner會根據我們選擇的Executor決定要採用何種方式與工作環境來完成CI Job。換言之，一個Runner可以被允許擁有多個executor，讓一個Job能運行在多種環境之中。</description>
+    </item>
+  </channel>
+</rss>
