@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Study on Hsuan-Ni&#39;s blog</title>
-    <link>http://localhost:1313/categories/study/</link>
+    <link>https://sophie0730.github.io/categories/study/</link>
     <description>Recent content in Study on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.124.1</generator>
     <language>en</language>
     <lastBuildDate>Wed, 03 Jul 2024 14:30:04 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/study/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sophie0730.github.io/categories/study/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2024 06月份讀書狀態回顧</title>
-      <link>http://localhost:1313/posts/2024/07/2024_6_review/</link>
+      <link>https://sophie0730.github.io/posts/2024/07/2024_6_review/</link>
       <pubDate>Wed, 03 Jul 2024 14:30:04 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/07/2024_6_review/</guid>
+      <guid>https://sophie0730.github.io/posts/2024/07/2024_6_review/</guid>
       <description>前陣子發現一直有在關注的部落格作者，會在自己的部落格分享每個月的學習回顧，覺得這是很好的自省方式，所以也想要跟著做。
 本月重點 這個月主要專注準備AWS SAA-C03證照，中間有跑去CNTUG申請LAB來試著架架看Kubernetes，透過Helm架設Prometheus+Grafana來監控cluster上面運行的服務，也有寫一點Python，刷leetcode防止失智。
 必須要檢討的是，這個月除了證照以外，並沒有訂定明確的讀書計畫，可能也跟我這個月其實很迷惘，到底要往開發還是往SRE走有關，就變成甚麼都碰一點。所以整個六月只有考到證照這件事算是有收穫。

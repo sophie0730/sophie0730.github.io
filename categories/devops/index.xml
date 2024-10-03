@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>DevOps on Hsuan-Ni&#39;s blog</title>
-    <link>http://localhost:1313/categories/devops/</link>
+    <link>https://sophie0730.github.io/categories/devops/</link>
     <description>Recent content in DevOps on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.124.1</generator>
     <language>en</language>
     <lastBuildDate>Thu, 03 Oct 2024 20:13:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sophie0730.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>清除冗餘的Docker layers</title>
-      <link>http://localhost:1313/posts/2024/10/note-docker-overlay/</link>
+      <link>https://sophie0730.github.io/posts/2024/10/note-docker-overlay/</link>
       <pubDate>Thu, 03 Oct 2024 20:13:00 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/10/note-docker-overlay/</guid>
+      <guid>https://sophie0730.github.io/posts/2024/10/note-docker-overlay/</guid>
       <description>因為剛換了一份具有挑戰性的新工作，有好一陣子沒有發文了，雖然手上有幾個在進行的學習或者project，但進度都還沒到可以發表文章的程度。剛好最近工作上有一個之前沒碰過的問題，花了一些時間做處理，因此在這邊簡單地記錄一下。
 問題敘述 在某個上班日的下午，筆者突然收到來自前端工程師的訊息，在跑CI process時GitLab Runner好像出了問題，導致pipeline fail了。經查詢後，發現是該Runner所在的VM disk 容量已達99.9%，已經不能夠再pull任何的image下來了。
 GitLab Runner在執行CICD job時，會pull許多暫時的image來完成任務。在敝公司的每一台Runner中，都有一個固定於每日凌晨執行的cronjob來清除這些job產生出來的image、volume以及build cache等。因此在一開始，筆者懷疑cronjob是否根本沒有如期執行，從而往system log去查看，想確認cronjob執行的狀況。
@@ -33,9 +33,9 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
     </item>
     <item>
       <title>自架GitLab Runner來執行單元測試</title>
-      <link>http://localhost:1313/posts/2024/07/gitlab-ci/</link>
+      <link>https://sophie0730.github.io/posts/2024/07/gitlab-ci/</link>
       <pubDate>Tue, 30 Jul 2024 07:13:00 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2024/07/gitlab-ci/</guid>
+      <guid>https://sophie0730.github.io/posts/2024/07/gitlab-ci/</guid>
       <description>接下來即將進入的新公司與職位，會需要大量與GitLab CI接觸，為了做好準備，這幾天花了些時間自己跑了一遍CI流程。
 GitLab CI Process 根據GitLab官方文件所述，所有CI/CD任務的執行都必須仰賴gitlab-ci.yml這個文件：
 To use GitLab CI/CD, you start with a .gitlab-ci.yml file at the root of your project. This file specifies the stages, jobs, and scripts to be executed during your CI/CD pipeline.

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -20,16 +20,16 @@ node_exporter的官方GitHub中就給了docker-compose.yaml的最佳範例：
 最後，透過資深同事的幫助，以下列指令發現這龐大的體積來源來自於Docker下面的overlay2資料夾。光是這個資料夾就佔用了300多GB。
 du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是連docker system prune都沒有辦法清理overlay嗎？錯了，docker system prune這個指令就是拿來清除任何暫停的container、沒有在使用的network, images, build cache。之所以會沒辦法完全清除，是因為這是Docker v25以前的一個bug（剛好敝公司使用的版本是v24&hellip;）">
 <meta name="author" content="Hsuan-Ni Hsu">
-<link rel="canonical" href="http://localhost:1313/posts/2024/10/note-docker-overlay/">
+<link rel="canonical" href="https://sophie0730.github.io/posts/2024/10/note-docker-overlay/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2024/10/note-docker-overlay/">
+<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/posts/2024/10/note-docker-overlay/">
 <noscript>
     <style>
         #theme-toggle,
@@ -80,14 +80,14 @@ node_exporter的官方GitHub中就給了docker-compose.yaml的最佳範例：
 最後，透過資深同事的幫助，以下列指令發現這龐大的體積來源來自於Docker下面的overlay2資料夾。光是這個資料夾就佔用了300多GB。
 du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是連docker system prune都沒有辦法清理overlay嗎？錯了，docker system prune這個指令就是拿來清除任何暫停的container、沒有在使用的network, images, build cache。之所以會沒辦法完全清除，是因為這是Docker v25以前的一個bug（剛好敝公司使用的版本是v24&hellip;）" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/2024/10/note-docker-overlay/" />
-<meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
+<meta property="og:url" content="https://sophie0730.github.io/posts/2024/10/note-docker-overlay/" />
+<meta property="og:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-10-03T20:13:00+08:00" />
 <meta property="article:modified_time" content="2024-10-03T20:13:00+08:00" /><meta property="og:site_name" content="Hsuan-Ni&#39;s blog" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
+<meta name="twitter:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta name="twitter:title" content="清除冗餘的Docker layers"/>
 <meta name="twitter:description" content="因為剛換了一份具有挑戰性的新工作，有好一陣子沒有發文了，雖然手上有幾個在進行的學習或者project，但進度都還沒到可以發表文章的程度。剛好最近工作上有一個之前沒碰過的問題，花了一些時間做處理，因此在這邊簡單地記錄一下。
 問題敘述 在某個上班日的下午，筆者突然收到來自前端工程師的訊息，在跑CI process時GitLab Runner好像出了問題，導致pipeline fail了。經查詢後，發現是該Runner所在的VM disk 容量已達99.9%，已經不能夠再pull任何的image下來了。
@@ -112,13 +112,13 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/posts/"
+      "item": "https://sophie0730.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "清除冗餘的Docker layers",
-      "item": "http://localhost:1313/posts/2024/10/note-docker-overlay/"
+      "item": "https://sophie0730.github.io/posts/2024/10/note-docker-overlay/"
     }
   ]
 }
@@ -136,7 +136,7 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
   "articleBody": "因為剛換了一份具有挑戰性的新工作，有好一陣子沒有發文了，雖然手上有幾個在進行的學習或者project，但進度都還沒到可以發表文章的程度。剛好最近工作上有一個之前沒碰過的問題，花了一些時間做處理，因此在這邊簡單地記錄一下。\n問題敘述 在某個上班日的下午，筆者突然收到來自前端工程師的訊息，在跑CI process時GitLab Runner好像出了問題，導致pipeline fail了。經查詢後，發現是該Runner所在的VM disk 容量已達99.9%，已經不能夠再pull任何的image下來了。\nGitLab Runner在執行CICD job時，會pull許多暫時的image來完成任務。在敝公司的每一台Runner中，都有一個固定於每日凌晨執行的cronjob來清除這些job產生出來的image、volume以及build cache等。因此在一開始，筆者懷疑cronjob是否根本沒有如期執行，從而往system log去查看，想確認cronjob執行的狀況。\n不料，cronjob的確有在指定的時間執行。但僅從system log並沒有辦法得知更詳細的資訊——例如執行前的硬體容量多少？執行後多少？如果cronjob確實有做容量的清除，那麼硬碟滿載的情況下大都在一天中的何時發生？SRE該如何即時得知這些訊息？\n可以從以上資訊得知，Gitlab Runner所在的虛擬機缺乏監控設施，導致我們沒有辦法即時、有效地獲得系統狀況，進而做出適合的判斷與解決方案。因此，建立系統的可觀測性便是開始解決問題的第一步。\n建立系統可觀測性：收集系統指標 敝公司的其他專案使用Prometheus + Grafana作為主要監控工具之一，又筆者只需要監控Linux中的系統指標，Prometheus已有現成的exporter可以做使用。綜合考量下，筆者在每一台Runner起了node_exporter的container以收集host-level的metrics，再使用Grafana去收集這些指標，繪製成可視化圖表。\n在這邊提一個小題外話，筆者先前也有自己實作過host-level的metrics exporter，只不過當時單純地認為，如果使用container部署這個服務，那麼觀察的指標不就只限於container裡面了嗎？事實上，在萬物皆檔案(Everything is a file)的Linux當中，我們可以在/proc、/sys等目錄找到CPU、Memory、Disk相關的資訊，因此如果想觀察host的指標，就只需要把host的檔案目錄掛載到container中就可以了！\nnode_exporter的官方GitHub中就給了docker-compose.yaml的最佳範例：\n--- version: '3.8' services: node_exporter: image: quay.io/prometheus/node-exporter:latest container_name: node_exporter command: - '--path.rootfs=/host' network_mode: host pid: host restart: unless-stopped volumes: - '/:/host:ro,rslave' 在監控與告警皆架設完成後（這部分其實還有一些細碎的小東西可以談，例如告警的閾值怎麼設？要監控哪些指標？因為怕偏離重點，先暫且不提），筆者發現，在上班時間，每一台Runner的硬碟佔用量已達全部容量的70~80%，約是400多GB左右，那自然是撐不到在半夜執行的cronjob。此外，即便筆者手動執行完docker system prune -a -f這個可以清除unused container、image以及building cache的指令，也只清除了80G左右的容量。\n基本上，每一台Runner所在的虛擬機就只有裝Runner這個應用程式，而且部署方式還是container，怎麼會佔用快要400GB的容量呢？\n最後，透過資深同事的幫助，以下列指令發現這龐大的體積來源來自於Docker下面的overlay2資料夾。光是這個資料夾就佔用了300多GB。\ndu -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是連docker system prune都沒有辦法清理overlay嗎？錯了，docker system prune這個指令就是拿來清除任何暫停的container、沒有在使用的network, images, build cache。之所以會沒辦法完全清除，是因為這是Docker v25以前的一個bug（剛好敝公司使用的版本是v24…）\ndocker system prune WARNING! This will remove: - all stopped containers - all networks not used by at least one container - all dangling images - unused build cache Are you sure you want to continue? [y/N] y 執行docker system prune之前，你會看到的警告 筆者在GitHub Issues中得到的資訊，因為這則留言才順利將問題解決 採取行動 定位問題後，首先採取的步驟當然是將Docker進行升級，基本上確認過change log中沒有什麼比較大的breaking change，在升級過程中並不會碰上什麼問題。\n# Upgrade to the latest version sudo apt-get update sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin # check docker version and status docker version sudo systemctl status docker 不過，在升級到最新版本v27.3.1之後，執行docker system prune -a -f還是沒辦法把overlay2裡面的build cache給清除！在查詢各個技術論壇的討論後，可能原因有以下：\n有可能是目前Docker底下的檔案目錄不完整，導致Docker engine發生非預期的損壞，在這個推論下，也不推薦直接刪除龐大的docker/overlay2資料夾，因為它屬於整個docker filesystem的一部份，不確定僅刪除這個資料夾會不會造成引擎的損壞。\n我們都知道Docker image是由一層一層的layer所組成，除了能用來區分唯獨層/可寫層(container)，透過共用layer的技術來減少image實際所佔用的硬體空間。我們在Dockerfile撰寫的指令就是一層層的layer，在pull image時，也能看見layer會依序的被pull下來，最後成就一個完整的image。\n但是，當image 在創建時，假設實體硬碟已經滿了，image理所當然就會創建失敗，那麼在硬碟滿了之前、已經pull下來的layer呢？它們還是會存在於overlay2的資料夾當中，只是Docker engine已經沒有辦法追蹤到他們，造成這些沒有被創建完成的layer就無法透過Docker指令進行刪除了。\n因此，筆者總結，一開始應是因為Docker本身的bug導致layer無法被完整刪除，又先前發生過幾次硬碟被填滿的狀況，導致許多沒有被創建完成的孤兒layer被留在overlay2資料夾中，即便Docker升級也無法被正確刪除。\n既然這些孤兒layer已無法被拯救，最好的方法便只剩下重啟Docker engine，來讓Docker重新組織並管理新的檔案系統。\n# DANGER, this will reset docker, deleting all containers, images, and volumes systemctl stop docker systemctl stop docker.socket sudo rm -rf /datadrive/docker systemctl start docker systemctl start docker.socket 重啟Docker以後，會看到Docker檔案系統已經重新長了回來，狀態和功能也都一切正常。之後，在使用docker system prune指令時，就能正確清除overlay2資料夾裡所用不到的layers了。\n後記 這次算是比較幸運，Gitlab Runner本身就是一個stateless的服務，不太需要去規劃資料的備份與保存，如果下次再遇到類似的事情，又是stateful的服務的話，可能就還需要多加一個資料備份的步驟，避免刪除整個Docker檔案系統而發生無法挽回的憾事。\n本篇來不及講到的指標監控和告警設置的部分，也是筆者認為非常有趣的部分，就等到下一篇文章再與各位分享。\n",
   "wordCount" : "201",
   "inLanguage": "en",
-  "image": "http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "2024-10-03T20:13:00+08:00",
+  "image": "https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "2024-10-03T20:13:00+08:00",
   "dateModified": "2024-10-03T20:13:00+08:00",
   "author":{
     "@type": "Person",
@@ -144,14 +144,14 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/posts/2024/10/note-docker-overlay/"
+    "@id": "https://sophie0730.github.io/posts/2024/10/note-docker-overlay/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Hsuan-Ni's blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/%3Clink%20/%20abs%20url%3E"
+      "url": "https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E"
     }
   }
 }
@@ -173,8 +173,8 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Hsuan-Ni&#39;s blog (Alt + H)">
-                <img src="http://localhost:1313/apple-touch-icon.png" alt="" aria-label="logo"
+            <a href="https://sophie0730.github.io/" accesskey="h" title="Hsuan-Ni&#39;s blog (Alt + H)">
+                <img src="https://sophie0730.github.io/apple-touch-icon.png" alt="" aria-label="logo"
                     height="35">Hsuan-Ni&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
@@ -201,32 +201,32 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://sophie0730.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://sophie0730.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://sophie0730.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://sophie0730.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://sophie0730.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/about/" title="About Me">
+                <a href="https://sophie0730.github.io/about/" title="About Me">
                     <span>About Me</span>
                 </a>
             </li>
@@ -237,7 +237,7 @@ du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是�
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://sophie0730.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://sophie0730.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       清除冗餘的Docker layers
     </h1>
@@ -332,10 +332,10 @@ systemctl start docker.socket
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/docker/">Docker</a></li>
+      <li><a href="https://sophie0730.github.io/tags/docker/">Docker</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="http://localhost:1313/posts/2024/07/gitlab-ci/">
+  <a class="next" href="https://sophie0730.github.io/posts/2024/07/gitlab-ci/">
     <span class="title">Next »</span>
     <br>
     <span>自架GitLab Runner來執行單元測試</span>
@@ -346,7 +346,7 @@ systemctl start docker.socket
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on x"
-            href="https://x.com/intent/tweet/?text=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f&amp;hashtags=Docker">
+            href="https://x.com/intent/tweet/?text=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f&amp;hashtags=Docker">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -355,7 +355,7 @@ systemctl start docker.socket
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f&amp;title=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;summary=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f&amp;title=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;summary=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;source=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -364,7 +364,7 @@ systemctl start docker.socket
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f&title=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers">
+            href="https://reddit.com/submit?url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f&title=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -373,7 +373,7 @@ systemctl start docker.socket
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -382,7 +382,7 @@ systemctl start docker.socket
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
+            href="https://api.whatsapp.com/send?text=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers%20-%20https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -391,7 +391,7 @@ systemctl start docker.socket
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on telegram"
-            href="https://telegram.me/share/url?text=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
+            href="https://telegram.me/share/url?text=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -400,7 +400,7 @@ systemctl start docker.socket
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 清除冗餘的Docker layers on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e6%b8%85%e9%99%a4%e5%86%97%e9%a4%98%e7%9a%84Docker%20layers&u=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f10%2fnote-docker-overlay%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -415,7 +415,7 @@ systemctl start docker.socket
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Hsuan-Ni&#39;s blog</a></span> · 
+        <span>&copy; 2024 <a href="https://sophie0730.github.io/">Hsuan-Ni&#39;s blog</a></span> · 
 
     <span>
         Powered by

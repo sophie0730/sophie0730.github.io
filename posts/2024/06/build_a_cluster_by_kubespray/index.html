@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -13,16 +13,16 @@ IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host
 在拿到openstack的帳號時，public網卡已經先幫我們建立好了，接下來要自己手動新增內網，並且能讓內網去連接到外網。在設定內網時，記得勾選「啟用DHCP」讓每個加進這個網路的VM都會被自動分配到唯一的ip位址。
 Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱：private-net 網路位址：192.">
 <meta name="author" content="Hsuan-Ni Hsu">
-<link rel="canonical" href="http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/">
+<link rel="canonical" href="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/">
+<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,14 +66,14 @@ IP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host
 在拿到openstack的帳號時，public網卡已經先幫我們建立好了，接下來要自己手動新增內網，並且能讓內網去連接到外網。在設定內網時，記得勾選「啟用DHCP」讓每個加進這個網路的VM都會被自動分配到唯一的ip位址。
 Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱：private-net 網路位址：192." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/" />
-<meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
+<meta property="og:url" content="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/" />
+<meta property="og:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-06-22T23:30:04+08:00" />
 <meta property="article:modified_time" content="2024-06-22T23:30:04+08:00" /><meta property="og:site_name" content="Hsuan-Ni&#39;s blog" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
+<meta name="twitter:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta name="twitter:title" content="使用kubespray在OpenStack上搭建kubernetes cluster"/>
 <meta name="twitter:description" content="先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。
 環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：
@@ -91,13 +91,13 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://localhost:1313/posts/"
+      "item": "https://sophie0730.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "使用kubespray在OpenStack上搭建kubernetes cluster",
-      "item": "http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/"
+      "item": "https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/"
     }
   ]
 }
@@ -115,7 +115,7 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
   "articleBody": "先前參加SRE Conference時，認識了CNTUG(Cloud Native Taiwan User Group)這個開源社群，除了推廣雲端原生的相關技術以外，也提供Lab讓大家能夠申請、在上面做一些很難在自己本機上面的實驗(例如kubernetes cluster的建立)，很幸運地前陣子遞交的Lab申請通過了，就也打算來寫一篇文章記錄整個實驗的架設與心得。\n環境準備 參考了CNTUG網站與kubernetes官方網站上面關於VM硬體條件的文件，這次在openstack上架了四台VM，一台bastion host、一台control plane(m0)、兩台worker node(n0, n1)。 四台VM分別的硬體條件如下：\nIP Address Server Name Role CPU Ram OS 192.168.200.100 bastion-host Bastion Host 2 2G Ubuntu 22.04 192.168.200.101 k8s-m0 Master Node - 0 4 4G Ubuntu 22.04 192.168.200.102 k8s-n0 Worker Node - 0 4 4G Ubuntu 22.04 192.168.200.103 k8s-n1 Worker Node - 1 4 4G Ubuntu 22.04 網路設定 準備兩張網卡：public與private。本實驗環境會將kubernetes cluster都放在內網，僅讓bastion host做對外的連線。\n在拿到openstack的帳號時，public網卡已經先幫我們建立好了，接下來要自己手動新增內網，並且能讓內網去連接到外網。在設定內網時，記得勾選「啟用DHCP」讓每個加進這個網路的VM都會被自動分配到唯一的ip位址。\nPublic Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱：private-net 網路位址：192.168.200.0/24 IP版本：IPv4 閘道IP(Gateway IP)：192.168.200.1 靜態路由(內網所有的設備要訪問任何不在內網的位址時，都把封包送到下一跳點的位址): 目標CIDR:0.0.0.0/0 下一跳點：103.122.117.XXX (Public gateway IP) 安全性群組設定 方才我們透過網路來設定各個網路設備的連接，那麼接下來進一步地透過安全性群組來管理端口與每台VM的流量。\n除了kubernetes本身需要開啟的端口以外，我會希望可以透過bastion host來ssh到cluster裡面的每個node，在內網的所有intance也需要互相連結。除此之外，bastion host也要開一個對外的22 port讓我可以從本地進行操作。\nControl Plane和Worker Node的port全部都參考官網建議去設置：kubernetes: Ports and Protocols\n最後，會有四個安全性群組：(所有的outbound都設置為\t0.0.0.0/0，故以下僅列出inbound rule)\nSecurity Group Ether Type IP protocol Port Range Remote IP Prefix Remote Security Group Description Public SSH IPv4 TCP 22 (SSH) (自己的電腦IP) NULL NULL Private SSH IPv4 TCP 22 (SSH) 192.168.200.0/24 NULL NULL Master node IPv4 TCP 2379 - 2380 192.168.200.0/24 etcd server client API IPv4 TCP 6443 192.168.200.0/24 Kubernetes API server IPv4 TCP 10250 NULL Master node Kubelet API IPv4 TCP 10257 NULL Master node kube-controller-manager IPv4 TCP 10259 NULL Master node kube-schedule Worker node IPv4 TCP 10250 NULL Worker node Kubelet API Self Worker node IPv4 TCP 10256 NULL Worker node kube-proxy IPv4 TCP 30000 - 32767 0.0.0.0/0 Worker node NodePort Services Master Node中的etcd元件是一個分散式的key-value資料庫，會保存kubernetes cluster裡面的所有資料，cluster裡面的所有狀態——例如Pod, Volume, Service的當前狀態——都會保存在這個資料庫中，由於在Worker Node的狀態會被回傳到etcd元件，因此開放讓內網裡所有的IP都能連線。\n在Master Node中另一個會需要開放給內網所有instance的原件還有Kubernetes API server，它讓使用者可以直接與cluster進行互動，包含查詢狀態、建立、更新、刪除cluster內部的資源等。同時由於我們先前已讓bastion host來處理所有來自外部的連線，因此在這邊的IP也是設定為內網IP即可。\nVM設置 網路與安全性群組都設定好後，cluster裡面的VM全都插入private網卡，再根據master/worker node分別分派各自的安全性群組。bastion host則插入public與private兩張網卡，以便與外部和內部網路進行連接。\nopenstack的網路設定有個小坑：bastion-host加入private網卡後，依然沒有辦法ping到內網的任何一台VM。經由ip addr確認後證實雖然openstack的UI介面顯示已經加入網卡了，但實際上private網卡並沒有設定到。\n這時候可以手動修改設定檔：\nsudo vim /etc/netplan/50-cloud-init.yaml 在設定檔中手動加入網卡：\nnetwork: ethernets: enp3s0: dhcp4: true match: macaddress: fa:16:3e:4f:f7:6c set-name: enp3s0 enp3s1: # 新增的配置 dhcp4: true match: macaddress: fa:16:3e:1f:77:9f set-name: enp3s1 # 指定新的網卡名稱 version: 2 （以上做法是看tico大大的部落格解決的:https://ithelp.ithome.com.tw/articles/10293768）\nKey generation 我們希望可以從本地電腦連線到bastion-host，也希望bastion-host可以連線到cluster裡面的任一個node。\n先在本地產一個key，把public key上傳到openstack的密鑰對。接著在設置VM時都加入這個密鑰對 把本地的private key用ssh的方式傳到bastion host ssh -i ubuntu@ 到這邊，確定四台VM的網路設置沒問題後，才真正可以來架設kubernetes cluster了。\nkubespray kubespray是一個開源專案，用來進行kubernetes cluster的創建。自version 2.3開始，kubespray的內部採用與kubeadm相同的生命週期管理，再透過Ansible Playbook來調用kubeadm來做叢集的建置。 kubeadm則是由官方開發維護，用來建立原生kubernetes環境的工具。因此，使用kubespray不僅兼顧了部署的方便性，也兼顧了kubernetes生命週期管理的穩定性。\n因此在安裝kubespray之前，要先在機器上面安裝Ansible以及Ansible所需要的Python環境。相關安裝步驟我是參考kubespray官方文件：Installing Ansible\n版本資訊 Python3 v3.10.4 Ansible v9.5.1 kubespray v2.25.0 安裝步驟 以下的安裝步驟，若無特別標註，就都是在bastion host來做執行。\n由於從openstack拿到的VM裡面已有內建Python，在這邊可以先裝Python的虛擬環境。\nubuntu@bastion-host:~$ sudo apt update ubuntu@bastion-host:~$ sudo apt install python3-virtualenv ubuntu@bastion-host:~$ virtualenv --version virtualenv 20.13.0+ds from /usr/lib/python3/dist-packages/virtualenv/__init__.py 接下來就可以把kubespray專案clone下來，這邊我裝的版本是撰寫當下的最新版本2.25.0。\ngit clone --depth 1 --branch v2.25.0 https://github.com/kubernetes-sigs/kubespray.git 安裝Ansible\nVENVDIR=kubespray-venv #指定virtual env位置 KUBESPRAYDIR=kubespray # kubespray資料夾位置 python3 -m venv $VENVDIR source $VENVDIR/bin/activate cd $KUBESPRAYDIR pip install -U -r requirements.txt # 安裝Ansible所需套件 如果順利的話，到這邊就可以看到(kubespray-env)已經被啟動了！\n在這邊我們會先把cluster的配置文件拷貝出來，創建一個自己的叢集目錄，方便配置與管理。\ncp -rfp inventory/sample inventory/mycluster 接著，進入到mycluster目錄中，編輯inventory.ini。裡面的設定檔就是我們server相關資訊的設定，其餘的參數代表意義可以參考kubespray的官方文件。\n# ## Configure 'ip' variable to bind kubernetes services on a # ## different ip than the default iface # ## We should set etcd_member_name for etcd cluster. The node that is not a etcd member do not need to set the value, or can set the empty string value. [all] # 根據文件範例設定，server_name ansiblehost= ansible_user= k8s-m0 ansible_host=192.168.200.101 ansible_user=ubuntu k8s-n0 ansible_host=192.168.200.102 ansible_user=ubuntu k8s-n1 ansible_host=192.168.200.103 ansible_user=ubuntu [kube_control_plane] k8s-m0 [etcd] # etcd的位置，在這邊就是與master node是在同一個位置 k8s-m0 [kube_node] k8s-n0 k8s-n1 [calico_rr] [k8s_cluster:children] kube_control_plane kube_node calico_rr 目前搭建的實驗環境資源有限，因此也將etcd放在master node上。master node目前也沒有做到HA的設計，是以單節點的方式存在。\n也由於master node以單節點的方式存在，不需要Load Balancer API server，我們進到inventory/mycluster/group_vars/all/all.yml把Line 20的loadbalancer_apiserver_localhost修改為False。\n接著，再進到inventory/mycluster/group_vars/k8s_cluster/k8s-cluster.yml把Line 160 的cluster_name修改成自己的cluster name。\n最後啟動ansible進行部署。\n# ansible-playbook -i --private-key= --become --become-user=root cluster.yml ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/private.key --become --become-user=root cluster.yml 這邊的private key就是在前面文章中，我們要從bastion host連線到cluster node的那把private key。\n在bastion host完成叢集的創建後，日後想要存取叢集需要拿取master node上面的token才行，因此我們先從bastion host SSH到master node。\nssh -i ~/.ssh/private.key ubuntu@192.168.200.101 先前提到kubespray是透過ansible做自動化部署，但底層仍舊遵循kubeadm的lifecycle。/etc/kubernetes/admin.conf在kubeadm初始化叢集時便會創建，可以算是使用者與Kubernetes API Server進行溝通的token。\n我們在操作叢集資源時一般都是使用kubectl來做到，為了要讓kubectl可以使用這個token來做資源操作，我們要修改一下權限，並且把token丟回bastion host，這樣在bastion host也可以使用kubectl 操作資源。\nubuntu@k8s-m0:~$ sudo cp /etc/kubernetes/admin.conf ~/ ubuntu@k8s-m0:~$ sudo chown ubuntu:ubuntu ~/admin.conf # 將user/group修改成當前用戶，這樣不需要sudo 也能操作token ubuntu@k8s-m0:~$ mkdir -p .kube #kubectl 會從這個目錄裡面來讀取相關的config文件 ubuntu@k8s-m0:~$ mv ~/admin.conf ~/.kube/config #將原本kubeadm創建的token移到能被kubectl 讀取的地方 確定能讀取到cluster的訊息後，再把~/.kube/config scp到bastion host的相同目錄下，讓kubectl可以讀取。\n(kubespray-venv) ubuntu@bastion-host:~$ mkdir -p ~/.kube (kubespray-venv) ubuntu@bastion-host:~$ scp -i ~/private.key ubuntu@192.168.200.101:~/.kube/config ~/.kube/config 另外要記得的是，config檔的line 5記錄著API Server的位置，因為我們是直接從master node將文件複製到bastion host，在這邊要記得把127.0.0.1改成192.168.200.101也就是master node的內網IP。\n安裝kubectl 這邊要注意的是kubectl的版本要和cluster的版本相同(可以差到一個minor version)。 查看完cluster版本後就直接按普通方式安裝即可。\n# 從kubectl get node就能查看cluster版本為v1.29.5 kubectl get node NAME STATUS ROLES AGE VERSION k8s-m0 Ready control-plane 24h v1.29.5 k8s-n0 Ready 24h v1.29.5 k8s-n1 Ready 24h v1.29.5 # download a specific version of kubectl curl -LO \"https://dl.k8s.io/release/v1.29.5/bin/linux/amd64/kubectl\" # Download the kubectl checksum file: curl -LO \"https://dl.k8s.io/v1.29.5/bin/linux/amd64/kubectl.sha256\" # validate the binary file echo \"$(cat kubectl.sha256) kubectl\" | sha256sum --check # check ok後就可以正式安裝 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl # 安裝後，不需要的檔案可以刪除 rm kubectl* 在bastion host下kubectl get node指令，大功告成！ 踩坑紀錄 前面才剛提供一個private網卡踩坑的解決辦法，結果隔天上bastion host就突然沒辦法讀取cluster的資源了。一查看發現是private那張網卡的設定又跑掉了。\nubuntu@bastion-host:~$ ip addr show enp3s1 3: enp3s1: mtu 1442 qdisc fq_codel state UP group default qlen 1000 link/ether fa:16:3e:1f:77:9f brd ff:ff:ff:ff:ff:ff inet6 fe80::f816:3eff:fe1f:779f/64 scope link valid_lft forever preferred_lft forever 由上面資訊可以發現它的IPv4配置不見了。因此我又手動加了回去。\nubuntu@bastion-host:~$ sudo ip addr add 192.168.200.100/24 dev enp3s1 ubuntu@bastion-host:~$ ip addr show enp3s1 3: enp3s1: mtu 1442 qdisc fq_codel state UP group default qlen 1000 link/ether fa:16:3e:1f:77:9f brd ff:ff:ff:ff:ff:ff inet 192.168.200.100/24 scope global enp3s1 valid_lft forever preferred_lft forever inet6 fe80::f816:3eff:fe1f:779f/64 scope link valid_lft forever preferred_lft forever 成功！但不確定是不是openstack的網路設置本就有一些問題，先把這個坑紀錄，之後看看會不會再發生。\nubuntu@bastion-host:~$ ping 192.168.200.101 PING 192.168.200.101 (192.168.200.101) 56(84) bytes of data. 64 bytes from 192.168.200.101: icmp_seq=1 ttl=64 time=5.44 ms 64 bytes from 192.168.200.101: icmp_seq=2 ttl=64 time=1.41 ms 64 bytes from 192.168.200.101: icmp_seq=3 ttl=64 time=1.06 ms 64 bytes from 192.168.200.101: icmp_seq=4 ttl=64 time=0.696 ms Reference Installing kubeadm https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin\n關於我怎麼把一年內學到的新手 IT/SRE 濃縮到 30 天筆記這檔事 https://ithelp.ithome.com.tw/users/20112934/ironman/5640\nComparison - Kubespray vs Kubeadm https://github.com/kubernetes-sigs/kubespray/blob/master/docs/getting_started/comparisons.md\nInstalling Ansible https://github.com/kubernetes-sigs/kubespray/blob/v2.19.1/docs/ansible.md#inventory\nInstall and Set Up kubectl on Linux https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/\nCNTUG Infra Labs 說明文件 https://docs.cloudnative.tw/docs/category/%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8\nOpenStack 上利用 kubeadm 搭建 K8S Cluster https://docs.cloudnative.tw/docs/self-paced-labs/kubeadm/\n",
   "wordCount" : "757",
   "inLanguage": "en",
-  "image": "http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "2024-06-22T23:30:04+08:00",
+  "image": "https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "2024-06-22T23:30:04+08:00",
   "dateModified": "2024-06-22T23:30:04+08:00",
   "author":{
     "@type": "Person",
@@ -123,14 +123,14 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/"
+    "@id": "https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Hsuan-Ni's blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "http://localhost:1313/%3Clink%20/%20abs%20url%3E"
+      "url": "https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E"
     }
   }
 }
@@ -152,8 +152,8 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Hsuan-Ni&#39;s blog (Alt + H)">
-                <img src="http://localhost:1313/apple-touch-icon.png" alt="" aria-label="logo"
+            <a href="https://sophie0730.github.io/" accesskey="h" title="Hsuan-Ni&#39;s blog (Alt + H)">
+                <img src="https://sophie0730.github.io/apple-touch-icon.png" alt="" aria-label="logo"
                     height="35">Hsuan-Ni&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
@@ -180,32 +180,32 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
+                <a href="https://sophie0730.github.io/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://sophie0730.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://sophie0730.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://sophie0730.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://sophie0730.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/about/" title="About Me">
+                <a href="https://sophie0730.github.io/about/" title="About Me">
                     <span>About Me</span>
                 </a>
             </li>
@@ -216,7 +216,7 @@ Public Network: Public IPv4: 103.122.XXX.0/23 Private Network: 子網路名稱�
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://sophie0730.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://sophie0730.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       使用kubespray在OpenStack上搭建kubernetes cluster
     </h1>
@@ -579,15 +579,15 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/kubernetes/">Kubernetes</a></li>
+      <li><a href="https://sophie0730.github.io/tags/kubernetes/">Kubernetes</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/2024/07/2024_6_review/">
+  <a class="prev" href="https://sophie0730.github.io/posts/2024/07/2024_6_review/">
     <span class="title">« Prev</span>
     <br>
     <span>2024 06月份讀書狀態回顧</span>
   </a>
-  <a class="next" href="http://localhost:1313/posts/2024/06/build_container_by_go_practice/">
+  <a class="next" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/">
     <span class="title">Next »</span>
     <br>
     <span>動手用Golang實作一個container - 實作篇</span>
@@ -598,7 +598,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on x"
-            href="https://x.com/intent/tweet/?text=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f&amp;hashtags=kubernetes">
+            href="https://x.com/intent/tweet/?text=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f&amp;hashtags=kubernetes">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -607,7 +607,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f&amp;title=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;summary=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f&amp;title=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;summary=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;source=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -616,7 +616,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f&title=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster">
+            href="https://reddit.com/submit?url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f&title=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -625,7 +625,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -634,7 +634,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
+            href="https://api.whatsapp.com/send?text=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster%20-%20https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -643,7 +643,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on telegram"
-            href="https://telegram.me/share/url?text=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
+            href="https://telegram.me/share/url?text=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -652,7 +652,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 使用kubespray在OpenStack上搭建kubernetes cluster on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e4%bd%bf%e7%94%a8kubespray%e5%9c%a8OpenStack%e4%b8%8a%e6%90%ad%e5%bb%bakubernetes%20cluster&u=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_a_cluster_by_kubespray%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -667,7 +667,7 @@ ansible-playbook -i inventory/mycluster/inventory.ini --private-key=~/.ssh/priva
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Hsuan-Ni&#39;s blog</a></span> · 
+        <span>&copy; 2024 <a href="https://sophie0730.github.io/">Hsuan-Ni&#39;s blog</a></span> · 
 
     <span>
         Powered by
