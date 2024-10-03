@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -15,16 +15,16 @@ run() : parent process要執行的function。負責創建child process及並配�
 func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：
 sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test.">
 <meta name="author" content="Hsuan-Ni Hsu">
-<link rel="canonical" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/">
+<link rel="canonical" href="http://localhost:1313/posts/2024/06/build_container_by_go_practice/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2024/06/build_container_by_go_practice/">
 <noscript>
     <style>
         #theme-toggle,
@@ -61,10 +61,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
         }
 
     </style>
-</noscript>
-  
-
-<meta property="og:title" content="動手用Golang實作一個container - 實作篇" />
+</noscript><meta property="og:title" content="動手用Golang實作一個container - 實作篇" />
 <meta property="og:description" content="來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
 以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
 docker container run &lt;image-name&gt; [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：
@@ -73,14 +70,14 @@ run() : parent process要執行的function。負責創建child process及並配�
 func main() { switch os.Args[1] { case &#34;run&#34;: run() case &#34;child&#34;: child(); default: panic(&#34;what??&#34;) } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：
 sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/" />
-<meta property="og:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
+<meta property="og:url" content="http://localhost:1313/posts/2024/06/build_container_by_go_practice/" />
+<meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-06-03T19:30:04+08:00" />
 <meta property="article:modified_time" content="2024-06-03T19:30:04+08:00" /><meta property="og:site_name" content="Hsuan-Ni&#39;s blog" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
+<meta name="twitter:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta name="twitter:title" content="動手用Golang實作一個container - 實作篇"/>
 <meta name="twitter:description" content="來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。
 以Docker為例，當我們要啟動一個container的時候，會使用這個指令：
@@ -100,13 +97,13 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "https://sophie0730.github.io/posts/"
+      "item": "http://localhost:1313/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "動手用Golang實作一個container - 實作篇",
-      "item": "https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/"
+      "item": "http://localhost:1313/posts/2024/06/build_container_by_go_practice/"
     }
   ]
 }
@@ -124,7 +121,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
   "articleBody": "來實作一個container吧 延續上篇的動手用Golang實作一個container - 概念篇，了解container的底層技術是如何實踐之後，我們就可以開始使用Golang來做出屬於我們自己的container了。\n以Docker為例，當我們要啟動一個container的時候，會使用這個指令：\ndocker container run [cmd] 以此為發想點，當我想要使用我的程式碼啟動container時，他長得會像這樣子：\ngo run main.go run [cmd] 在這裡，我們會分別定義兩種function：\nrun() : parent process要執行的function。負責創建child process及並配置其運行的環境（如namespace）。 child() : child process要執行的function。負責管理在container環境中，要如何運行用戶端所指定的命令。 而must()function則會作為error handler使用。\nfunc main() { switch os.Args[1] { case \"run\": run() case \"child\": child(); default: panic(\"what??\") } } func must(err error) { if err != nil { panic(err) } } 這邊還蠻想提一下os.Args這個指令。os.Args 是Golang裡面用來儲存命令行參數的一個變數。如果我們只單印出os.Args，他會長的像這樣：\nsophie@Sophie-Desktop:~/go-container$ go run test.go run echo 'hi' [/tmp/go-build3547203082/b001/exe/test run echo hi] 第一行是我執行Go程式碼的指令，第二行是os.Args印出來的結果。到這裡會發現為什麼go run test.go 不但沒有被儲存在os.Args中，反而還多了一串類似像檔案路徑的東西？\n這是因為當我們使用go run來運行程式時，他會先編譯我們指定的程式碼檔案，創建一個臨時的執行檔，它實際運行的其實是這個臨時創建出來的執行檔。\n因此，這也能說明為什麼go run test.go直接被這個臨時執行檔的路徑給取代了。基於這個架構，我們使用os.Args[1]的元素就能判斷是否為執行container的命令行。\nParent Process run()這個function定義了parent process的行為。在這裡，我們會需要做到以下這幾件事：\n創建一個child process - 這個child process將會是這個container裡面的PID 1 process。 使用這個child process執行命令行中，run後面的指令。 為這個child process創建一個新的PID namespace、UTS namespace （實際上大家使用的container技術如Docker，可能會有更多的namespace來做更加嚴實的隔離，在這裡我們先使用兩個namespace作為實驗） func run() { cmd := exec.Command(\"/proc/self/exe\", append([]string{\"child\"}, os.Args[2:]...)...) cmd.Stdin = os.Stdin cmd.Stdout = os.Stdout cmd.Stderr = os.Stderr //create a namespace and new pid cmd.SysProcAttr = \u0026syscall.SysProcAttr{ Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID, } must(cmd.Run()) } 這邊可以注意到我使用exec.Command呼叫了一個child process，這個child process會使用我們剛剛編譯過的臨時執行檔，而且會創建一個新的命令行指令，且以\"child\"作為開頭，而後面的arguments則會與parent process的指令相同。\n講的可能有些饒口，意思是，當parent process執行的命令行指令為go run main.go run /bin/bash，那麼現在這個child process則會執行/tmp/go-build3547203082/b001/exe/test child /bin/bash。\n到這邊，我們就可以開始定義child process接下來的行為了。\nChild Process (container中的PID 1 Process) 我們可以先在這個function埋一個log，來看這個child process的PID是否真的為1。\nfmt.Printf(\"running %v as PID %d\\n\", os.Args[2:], os.Getpid()) 在child()function裡面，可以實際來執行剛剛所輸入的命令行指令/bin/bash。\ncmd := exec.Command(os.Args[2], os.Args[3:]... ) cmd.Stdin = os.Stdin cmd.Stdout = os.Stdout cmd.Stderr = os.Stderr must(cmd.Run()) 完成後，到這裡我們就可以先試跑看看程式碼了。 可以觀察到，/bin/bash不僅被執行，且PID真的是1！接著，我們可以來試試看現在是否處在container的隔離環境之中：\n我先在這個container裡面，把我的hostname從Sophie-Desktop替換成test-sophie： 退出container之後，在host觀察hostname，會發現hostname並沒有被更動！UTS namespace的確有發揮作用。 到這裡，一個簡易版的container（看似）就完成了。\n編按：這邊要提醒讀者，這裡的hostname之所以能做到隔離，是因為在前面我們加上了UTS namespace syscall.CLONE_NEWUTS，在這次實驗中，我們只有加了PID和UTS這兩個比較好觀察到的namespace，因此只能在Hostname以及PID的部分觀察到隔離的效果！\n檔案路徑與Process的可見性 為什麼上一個章節會說「看似」完成呢？實際上，我們再回到container中，會發現我們看得到host的檔案以及正在運行的process： 這並不符合我們對於container的理解，對吧？\n我們先來釐清一下為什麼會觀察到這樣的狀況。我們剛剛使用namespace創建了獨立的環境，來讓process運行，但實際上以目前的程式碼來看，container所使用的檔案系統和host會是同一個。為了要避免container裡面的process直接去訪問、操作位在host的檔案，我們可以使用先建造一個具有完整Linux系統的子目錄，再使用上一篇所提到chroot來改變container的根目錄位址。\n在Linux環境中，可以使用debootstrap指令來創建這個子目錄，以下指令是以AMD64的晶片架構、Ubuntu 22.04為例。\nsudo apt-get install debootstrap sudo debootstrap --arch=amd64 jammy /home/rootfs http://archive.ubuntu.com/ubuntu/ 接著就能看到在home/rootfs底下，就有一個基本的Linux檔案架構了。回到程式，便可以指定這個路徑，讓它成為container的根目錄。 must(syscall.Chroot(\"/home/rootfs\")) must(os.Chdir(\"/\")) 編按：如果使用這樣的方式，container對文件的修改會直接影響到host的檔案。最好的方法，還是要回歸上一篇有稍微提及的聯合檔案系統，將文件分為唯讀層、可寫層，所有的修改都應只在可寫層上進行。\n再回頭來說說Process。在Linux中，/proc負責存取系統中每一個process和thread的狀態。回想前一個章節，當我們還在和host共用檔案目錄時，自然也讀取到了host的/proc檔案，連帶讀取到host的所有process了。\n我們剛剛製作的小型Linux檔案系統並沒有包含/proc檔案系統，因此需要手動另外掛載：\nmust(syscall.Mount(\"proc\", \"proc\", \"proc\", 0, \"\")) 完成後，再回頭執行ps aux，就會出現預期中的效果了。 結語 此次透過實作一個container，來更加了解container的底層技術。不過，礙於篇幅及時間有限，實做出來的東西僅做實驗使用，並沒有做到非常完整的隔離與資源限制，或許都能成為下次努力精進的方向。\n最後，不免俗地於文末附上完整的程式碼。（當然，僅供學習使用，其嚴謹度當然是不能夠使用在production環境！）\npackage main import ( \"fmt\" \"os\" \"os/exec\" \"syscall\" ) func main() { switch os.Args[1] { case \"run\": run() case \"child\": child() default: panic(\"what??\") } } func run() { cmd := exec.Command(\"/proc/self/exe\", append([]string{\"child\"}, os.Args[2:]...)...) cmd.Stdin = os.Stdin cmd.Stdout = os.Stdout cmd.Stderr = os.Stderr //create a namespace and new pid cmd.SysProcAttr = \u0026syscall.SysProcAttr{ Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID, } must(cmd.Run()) } func child() { fmt.Printf(\"running %v as PID %d\\n\", os.Args[2:], os.Getpid()) cmd := exec.Command(os.Args[2], os.Args[3:]... ) cmd.Stdin = os.Stdin cmd.Stdout = os.Stdout cmd.Stderr = os.Stderr //create file system for container must(syscall.Chroot(\"/home/rootfs\")) must(os.Chdir(\"/\")) //mount /proc must(syscall.Mount(\"proc\", \"proc\", \"proc\", 0, \"\")) must(cmd.Run()) } func must(err error) { if err != nil { panic(err) } } Reference 此篇文章受這部影片所啟發：Building a container from scratch in Go - Liz Rice (Microscaling Systems)\n",
   "wordCount" : "338",
   "inLanguage": "en",
-  "image": "https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "2024-06-03T19:30:04+08:00",
+  "image": "http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "2024-06-03T19:30:04+08:00",
   "dateModified": "2024-06-03T19:30:04+08:00",
   "author":{
     "@type": "Person",
@@ -132,14 +129,14 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://sophie0730.github.io/posts/2024/06/build_container_by_go_practice/"
+    "@id": "http://localhost:1313/posts/2024/06/build_container_by_go_practice/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Hsuan-Ni's blog",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://sophie0730.github.io/%3Clink%20/%20abs%20url%3E"
+      "url": "http://localhost:1313/%3Clink%20/%20abs%20url%3E"
     }
   }
 }
@@ -161,8 +158,8 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://sophie0730.github.io/" accesskey="h" title="Hsuan-Ni&#39;s blog (Alt + H)">
-                <img src="https://sophie0730.github.io/apple-touch-icon.png" alt="" aria-label="logo"
+            <a href="http://localhost:1313/" accesskey="h" title="Hsuan-Ni&#39;s blog (Alt + H)">
+                <img src="http://localhost:1313/apple-touch-icon.png" alt="" aria-label="logo"
                     height="35">Hsuan-Ni&#39;s blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
@@ -189,32 +186,32 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
         </div>
         <ul id="menu">
             <li>
-                <a href="https://sophie0730.github.io/posts/" title="Posts">
+                <a href="http://localhost:1313/posts/" title="Posts">
                     <span>Posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://sophie0730.github.io/categories/" title="Categories">
+                <a href="http://localhost:1313/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="https://sophie0730.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://sophie0730.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://sophie0730.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="https://sophie0730.github.io/about/" title="About Me">
+                <a href="http://localhost:1313/about/" title="About Me">
                     <span>About Me</span>
                 </a>
             </li>
@@ -225,7 +222,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://sophie0730.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://sophie0730.github.io/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       動手用Golang實作一個container - 實作篇
     </h1>
@@ -406,17 +403,17 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://sophie0730.github.io/tags/linux/">Linux</a></li>
-      <li><a href="https://sophie0730.github.io/tags/golang/">Golang</a></li>
-      <li><a href="https://sophie0730.github.io/tags/container/">Container</a></li>
+      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
+      <li><a href="http://localhost:1313/tags/golang/">Golang</a></li>
+      <li><a href="http://localhost:1313/tags/container/">Container</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://sophie0730.github.io/posts/2024/06/build_a_cluster_by_kubespray/">
+  <a class="prev" href="http://localhost:1313/posts/2024/06/build_a_cluster_by_kubespray/">
     <span class="title">« Prev</span>
     <br>
     <span>使用kubespray在OpenStack上搭建kubernetes cluster</span>
   </a>
-  <a class="next" href="https://sophie0730.github.io/posts/2024/05/build_container_by_go/">
+  <a class="next" href="http://localhost:1313/posts/2024/05/build_container_by_go/">
     <span class="title">Next »</span>
     <br>
     <span>動手用Golang實作一個container - 概念篇</span>
@@ -427,7 +424,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on x"
-            href="https://x.com/intent/tweet/?text=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f&amp;hashtags=Linux%2cGolang%2cContainer">
+            href="https://x.com/intent/tweet/?text=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f&amp;hashtags=Linux%2cGolang%2cContainer">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -436,7 +433,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f&amp;title=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;summary=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;source=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f&amp;title=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;summary=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -445,7 +442,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on reddit"
-            href="https://reddit.com/submit?url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f&title=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87">
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f&title=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -454,7 +451,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -463,7 +460,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on whatsapp"
-            href="https://api.whatsapp.com/send?text=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87%20-%20https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
+            href="https://api.whatsapp.com/send?text=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -472,7 +469,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on telegram"
-            href="https://telegram.me/share/url?text=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;url=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
+            href="https://telegram.me/share/url?text=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -481,7 +478,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 動手用Golang實作一個container - 實作篇 on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&u=https%3a%2f%2fsophie0730.github.io%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
+            href="https://news.ycombinator.com/submitlink?t=%e5%8b%95%e6%89%8b%e7%94%a8Golang%e5%af%a6%e4%bd%9c%e4%b8%80%e5%80%8bcontainer%20-%20%e5%af%a6%e4%bd%9c%e7%af%87&u=http%3a%2f%2flocalhost%3a1313%2fposts%2f2024%2f06%2fbuild_container_by_go_practice%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -496,7 +493,7 @@ sophie@Sophie-Desktop:~/go-container$ go run test.go run echo &#39;hi&#39; [/tmp
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://sophie0730.github.io/">Hsuan-Ni&#39;s blog</a></span> · 
+        <span>&copy; 2024 <a href="http://localhost:1313/">Hsuan-Ni&#39;s blog</a></span> · 
 
     <span>
         Powered by

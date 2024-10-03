@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Observability | Hsuan-Ni&#39;s blog</title>
+<title>Docker | Hsuan-Ni&#39;s blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="一些跟軟體工程相關的筆記區">
 <meta name="author" content="Hsuan-Ni Hsu">
-<link rel="canonical" href="http://localhost:1313/tags/observability/">
+<link rel="canonical" href="http://localhost:1313/tags/docker/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.70bbd05c33a713a41e18cdd9618263df3acf500c51ff5678446b2c84e92342c8.css" integrity="sha256-cLvQXDOnE6QeGM3ZYYJj3zrPUAxR/1Z4RGsshOkjQsg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/observability/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/observability/">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/docker/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/docker/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,19 +56,16 @@
         }
 
     </style>
-</noscript>
-  
-
-<meta property="og:title" content="Observability" />
+</noscript><meta property="og:title" content="Docker" />
 <meta property="og:description" content="一些跟軟體工程相關的筆記區" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/tags/observability/" />
+<meta property="og:url" content="http://localhost:1313/tags/docker/" />
 <meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
 <meta property="og:site_name" content="Hsuan-Ni&#39;s blog" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
-<meta name="twitter:title" content="Observability"/>
+<meta name="twitter:title" content="Docker"/>
 <meta name="twitter:description" content="一些跟軟體工程相關的筆記區"/>
 
 </head>
@@ -140,14 +137,19 @@
                     <span>Search</span>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="About Me">
+                    <span>About Me</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
 <header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
   <h1>
-    Observability
-    <a href="/tags/observability/index.xml" title="RSS" aria-label="RSS">
+    Docker
+    <a href="/tags/docker/index.xml" title="RSS" aria-label="RSS">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" height="23">
         <path d="M4 11a9 9 0 0 1 9 9" />
@@ -160,14 +162,25 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">在Kubernetes運用Prometheus，建立可觀測性小宇宙
+    <h2 class="entry-hint-parent">清除冗餘的Docker layers
     </h2>
   </header>
   <div class="entry-content">
-    <p></p>
+    <p>因為剛換了一份具有挑戰性的新工作，有好一陣子沒有發文了，雖然手上有幾個在進行的學習或者project，但進度都還沒到可以發表文章的程度。剛好最近工作上有一個之前沒碰過的問題，花了一些時間做處理，因此在這邊簡單地記錄一下。
+問題敘述 在某個上班日的下午，筆者突然收到來自前端工程師的訊息，在跑CI process時GitLab Runner好像出了問題，導致pipeline fail了。經查詢後，發現是該Runner所在的VM disk 容量已達99.9%，已經不能夠再pull任何的image下來了。
+GitLab Runner在執行CICD job時，會pull許多暫時的image來完成任務。在敝公司的每一台Runner中，都有一個固定於每日凌晨執行的cronjob來清除這些job產生出來的image、volume以及build cache等。因此在一開始，筆者懷疑cronjob是否根本沒有如期執行，從而往system log去查看，想確認cronjob執行的狀況。
+不料，cronjob的確有在指定的時間執行。但僅從system log並沒有辦法得知更詳細的資訊——例如執行前的硬體容量多少？執行後多少？如果cronjob確實有做容量的清除，那麼硬碟滿載的情況下大都在一天中的何時發生？SRE該如何即時得知這些訊息？
+可以從以上資訊得知，Gitlab Runner所在的虛擬機缺乏監控設施，導致我們沒有辦法即時、有效地獲得系統狀況，進而做出適合的判斷與解決方案。因此，建立系統的可觀測性便是開始解決問題的第一步。
+建立系統可觀測性：收集系統指標 敝公司的其他專案使用Prometheus &#43; Grafana作為主要監控工具之一，又筆者只需要監控Linux中的系統指標，Prometheus已有現成的exporter可以做使用。綜合考量下，筆者在每一台Runner起了node_exporter的container以收集host-level的metrics，再使用Grafana去收集這些指標，繪製成可視化圖表。
+在這邊提一個小題外話，筆者先前也有自己實作過host-level的metrics exporter，只不過當時單純地認為，如果使用container部署這個服務，那麼觀察的指標不就只限於container裡面了嗎？事實上，在萬物皆檔案(Everything is a file)的Linux當中，我們可以在/proc、/sys等目錄找到CPU、Memory、Disk相關的資訊，因此如果想觀察host的指標，就只需要把host的檔案目錄掛載到container中就可以了！
+node_exporter的官方GitHub中就給了docker-compose.yaml的最佳範例：
+--- version: &#39;3.8&#39; services: node_exporter: image: quay.io/prometheus/node-exporter:latest container_name: node_exporter command: - &#39;--path.rootfs=/host&#39; network_mode: host pid: host restart: unless-stopped volumes: - &#39;/:/host:ro,rslave&#39; 在監控與告警皆架設完成後（這部分其實還有一些細碎的小東西可以談，例如告警的閾值怎麼設？要監控哪些指標？因為怕偏離重點，先暫且不提），筆者發現，在上班時間，每一台Runner的硬碟佔用量已達全部容量的70~80%，約是400多GB左右，那自然是撐不到在半夜執行的cronjob。此外，即便筆者手動執行完docker system prune -a -f這個可以清除unused container、image以及building cache的指令，也只清除了80G左右的容量。
+基本上，每一台Runner所在的虛擬機就只有裝Runner這個應用程式，而且部署方式還是container，怎麼會佔用快要400GB的容量呢？
+最後，透過資深同事的幫助，以下列指令發現這龐大的體積來源來自於Docker下面的overlay2資料夾。光是這個資料夾就佔用了300多GB。
+du -ch --max-depth=1 /datadrive/docker/ Docker v25後才修復的bug 難道是連docker system prune都沒有辦法清理overlay嗎？錯了，docker system prune這個指令就是拿來清除任何暫停的container、沒有在使用的network, images, build cache。之所以會沒辦法完全清除，是因為這是Docker v25以前的一個bug（剛好敝公司使用的版本是v24…）...</p>
   </div>
-  <footer class="entry-footer"><span title='2024-06-27 19:30:04 +0800 CST'>June 27, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
-  <a class="entry-link" aria-label="post link to 在Kubernetes運用Prometheus，建立可觀測性小宇宙" href="http://localhost:1313/posts/2024/06/prometheus_and_helm/"></a>
+  <footer class="entry-footer"><span title='2024-10-03 20:13:00 +0800 CST'>October 3, 2024</span>&nbsp;·&nbsp;Hsuan-Ni Hsu</footer>
+  <a class="entry-link" aria-label="post link to 清除冗餘的Docker layers" href="http://localhost:1313/posts/2024/10/note-docker-overlay/"></a>
 </article>
     </main>
     

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CICD on Hsuan-Ni&#39;s blog</title>
-    <link>https://sophie0730.github.io/tags/cicd/</link>
+    <link>http://localhost:1313/tags/cicd/</link>
     <description>Recent content in CICD on Hsuan-Ni&#39;s blog</description>
     <image>
       <title>Hsuan-Ni&#39;s blog</title>
-      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.124.1</generator>
     <language>en</language>
     <lastBuildDate>Tue, 30 Jul 2024 07:13:00 +0800</lastBuildDate>
-    <atom:link href="https://sophie0730.github.io/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>自架GitLab Runner來執行單元測試</title>
-      <link>https://sophie0730.github.io/posts/2024/07/gitlab-ci/</link>
+      <link>http://localhost:1313/posts/2024/07/gitlab-ci/</link>
       <pubDate>Tue, 30 Jul 2024 07:13:00 +0800</pubDate>
-      <guid>https://sophie0730.github.io/posts/2024/07/gitlab-ci/</guid>
+      <guid>http://localhost:1313/posts/2024/07/gitlab-ci/</guid>
       <description>接下來即將進入的新公司與職位，會需要大量與GitLab CI接觸，為了做好準備，這幾天花了些時間自己跑了一遍CI流程。
 GitLab CI Process 根據GitLab官方文件所述，所有CI/CD任務的執行都必須仰賴gitlab-ci.yml這個文件：
 To use GitLab CI/CD, you start with a .gitlab-ci.yml file at the root of your project. This file specifies the stages, jobs, and scripts to be executed during your CI/CD pipeline.
