@@ -2,23 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Operation-System on Sophie Hsu</title>
-    <link>http://localhost:1313/categories/operation-system/</link>
+    <link>http://localhost:50073/categories/operation-system/</link>
     <description>Recent content in Operation-System on Sophie Hsu</description>
     <image>
       <title>Sophie Hsu</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>http://localhost:50073/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>http://localhost:50073/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.124.1</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 01 Nov 2025 14:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/operation-system/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Feb 2025 14:04:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:50073/categories/operation-system/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>淺談監控方法論</title>
-      <link>http://localhost:1313/posts/2025/11/monitoring-method/</link>
-      <pubDate>Sat, 01 Nov 2025 14:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2025/11/monitoring-method/</guid>
-      <description></description>
+      <title>MIT 6.1810 Lab 1: Xv6 and Unix utilities</title>
+      <link>http://localhost:50073/posts/2025/02/mit_61810_lab1/</link>
+      <pubDate>Sat, 22 Feb 2025 14:04:00 +0800</pubDate>
+      <guid>http://localhost:50073/posts/2025/02/mit_61810_lab1/</guid>
+      <description>最近開始從頭把資工的基礎科目慢慢補完，一直都有聽聞MIT的作業系統課程很有名，所以選了6.1810（原6.S081）這門課程作為教材。
+課程相關的整理在繁體中文圈已經有不少，因此這篇系列文主要著重於我在實作課後Lab的學習心得。
+環境準備 課堂上使用的作業系統是MIT開發、供學習使用的輕量作業系統xv6，他是一個unix-like的作業系統，不過結構上較為簡單。由於這個作業系統需在RISC-V的微處理器上運行，我開發使用的硬體是MacBook Pro M3，所以我需要使用QEMU來模擬RISC-V的環境。
+這邊要比較注意的事情是，課程的教學文件會請你安裝目前最新版本的risc-v tool chain，但一開始我使用的repository不是最新的，這會導致compile tool和repo所需要的版本不同而出錯，如果要解的話就只能安裝和該repo相容的版本，或者直接使用最新的repository。我最後選擇clone最新年度的repository，來避免版本不相容的情況。
+撇除版本問題，課程的環境架設文件寫得非常清楚，照著安裝就可以了：
+$ brew tap riscv/riscv $ brew install riscv-tools $ PATH=$PATH:/usr/local/opt/riscv-gnu-toolchain/bin $ brew install qemu Write a pingpong command 這邊主要是測驗你是否知道如何在兩個process之間傳遞byte。Parent process會傳遞一個byte到child process，而child process這邊收到之後，要印出Parent process的PID以及ping，接著輪到child process傳遞byte給parent，並執行一樣的動作。
+因此，這邊會需要使用到pipe 來作為Inter-Process communication的橋樑。它是一小塊kernel buffer，提供兩個file descripor作為讀寫使用：
+p[0]: read end p[1]: write end 這邊我們先來create child process，並且定義兩者的行為，當我們使用fork()這個system call，它代表我們創建了一個新的process，它擁有和parent process一模一樣的內容，但擁有自己的記憶體空間：
+int p1[2]; //for parent process write int p2[2]; //for child process write int pid; int parentPid, childPid; pid = fork(); if (pid &amp;lt; 0) { printf(&amp;#34;fork error\n&amp;#34;); exit(1); } if (pid &amp;gt; 0) { // parent process } else { // child process } exit(0); 首先我們來定義parent process的行為，他要向pipe寫入自己的PID，並且等待child process回傳PID。以parent process的角度來看，parent負責寫、child負責讀，我們需要把pipe中不需要的file descriptor釋放，在執行完任務後，使用過的file descriptor也要跟著釋放，避免之後的process無法使用這些descriptor。</description>
     </item>
   </channel>
 </rss>

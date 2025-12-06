@@ -2,23 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Observability on Sophie Hsu</title>
-    <link>http://localhost:1313/tags/observability/</link>
+    <link>https://sophie0730.github.io/tags/observability/</link>
     <description>Recent content in Observability on Sophie Hsu</description>
     <image>
       <title>Sophie Hsu</title>
-      <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://sophie0730.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.124.1</generator>
     <language>en</language>
     <lastBuildDate>Sat, 01 Nov 2025 14:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/observability/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sophie0730.github.io/tags/observability/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>淺談監控方法論</title>
-      <link>http://localhost:1313/posts/2025/11/monitoring-method/</link>
+      <title>《被稱作Server Restart Engineer的我，也想了解如何實踐可觀測性工程》 Day 02: 淺談監控方法論</title>
+      <link>https://sophie0730.github.io/posts/2025/11/ithome-2025-02/</link>
       <pubDate>Sat, 01 Nov 2025 14:00:00 +0800</pubDate>
-      <guid>http://localhost:1313/posts/2025/11/monitoring-method/</guid>
-      <description></description>
+      <guid>https://sophie0730.github.io/posts/2025/11/ithome-2025-02/</guid>
+      <description>此為 2025 iThome 鐵人賽系列文《被稱作Server Restart Engineer的我，也想了解如何實踐可觀測性工程》系列
+可觀測性與監控 在講述可觀測性是什麼之前，我想先和各位來談談監控(Monitoring)。在《可觀測性工程：達成卓越營運》書中提到，當我們將監控和可觀測性混為一談時，就難以展開有意義的討論。
+市面上常見的監控工具大多是被動的，擅長偵測和應對已知問題。這讓我想到剛開始工作時，曾經苦惱於該如何設置系統的告警閾值。那時候前輩給我的建議是：「經驗」。
+意思是說，這些設定將會因為時間推移和事件發生不斷迭代修正。監控主要協助判斷系統健康狀況；而可觀測性則協助找出問題如何發生、解決未知問題。
+近年來因為雲原生、微服務的興起，使得系統的互動變得更為複雜、除錯更加困難。這時候，只發現系統何時出錯已經遠遠不夠，人們逐漸希望系統能提供更多的上下文(Context)線索來排除故障，這也是為什麼可觀測性在近幾年已然成為顯學。
+基於上述脈絡，在深入探討可觀測性之前，讓我們先了解目前業界常討論的幾個監控方法論。這些方法論能幫助我們建立系統性的監控思維，從「何時發生錯誤」逐步進展到「為何發生錯誤」。
+今天將會和各位介紹兩種結構化的監控方法論，分別是：
+USE Method RED Method 這些方法論各有其適用場景，也可以互相搭配使用。接下來讓我們逐一了解它們的核心概念和實際應用。
+USE Method The Utilization Saturation and Errors (USE Method) 是由 Brendan Gregg 所提出的系統效能監控方法論。他的核心理念就是這個方法論的名稱，「針對每個資源，去檢查使用率、飽和度和錯誤」。
+更近一步地說，USE Method 專注於系統效能層面的監控，針對每個資源進行三個維度的檢查：
+Utilization（使用率）：資源平均忙碌的時間百分比。例如 CPU 使用率 85% 表示該 CPU 有 85% 的時間在處理工作 Saturation（飽和度）：資源承擔超過其處理能力的工作量程度。例如佇列(Queue)中等待被處理的任務數量 Errors（錯誤）：錯誤事件的數量。例如網路封包丟失的次數 USE Method 所說的資源主要指硬體資源，例如：
+CPU：處理器核心、執行緒 Memory：實體記憶體容量 Network interfaces：網路介面卡 Storage devices：硬碟、SSD Controllers：磁碟控制器、網路控制器 Interconnects：CPU 互連、記憶體匯流排 USE Method就是透過逐一檢查每個資源的 U.S.E 三個指標，讓工程師能夠快速定位系統瓶頸。只不過，系統本身可能存在多個效能問題，我們所發現的問題可能只是其中一個。這時候，我們就需要輔以其他方法來做更深入的分析，但 USE Method 仍能夠協助我們不斷迭代所有資源、持續發現問題。
+RED Method The RED Method 是由 Tom Wilkie 所提出。不同於 USE Method 針對硬體資源的效能，RED Method 主要針對微服務，並以 Rate、Errors、Duration 三種指標來評估其性能。</description>
+    </item>
+    <item>
+      <title>《被稱作Server Restart Engineer的我，也想了解如何實踐可觀測性工程》 Day 01: 前言</title>
+      <link>https://sophie0730.github.io/posts/2025/10/ithome-2025-01/</link>
+      <pubDate>Fri, 31 Oct 2025 14:00:00 +0800</pubDate>
+      <guid>https://sophie0730.github.io/posts/2025/10/ithome-2025-01/</guid>
+      <description>此為 2025 iThome 鐵人賽系列文《被稱作Server Restart Engineer的我，也想了解如何實踐可觀測性工程》系列
+作為一名半路出家的工程師，去年因為工作需要，開始關注業界在實踐可觀測性工程的方法以及心得。從 observability 1.0、2.0 到現在 3.0 問世，再到許多工具的使用，例如 Metrics 的監控工具 Prometheus、使用 Elastic stack 收集 logs，最後因應微服務的興起，Traces 的監控也變成不可或缺的一部分。
+本身有幸在擔任 SRE 的第一份工作中，就有從零到一建構一套監控系統的機會。但是，當時的我專注於學習工具的使用，認為把工具架設好、告警能成功發出，就算是實踐可觀測性工程了。一年過去，有了一個機會進入到新團隊，非常巧合地第一份任務就是建構一套適合團隊的監控系統。這次導入系統的心情，和一年前卻有很大的不同。
+一年前的我，專注於工具的使用，卻忽略了可觀測性對於團隊的意義是什麼？它能怎麼幫助團隊快速定位問題？可觀測性之於 SRE 這個角色又是什麼？導入可觀測性將會有不小的成本花費，那麼它能為商業產品面帶來哪些好處與貢獻？一年後的我，在動手架構系統之前，開始思考這些問題。
+近幾年不管是在研討會上或者社群中，也看到許多關於可觀測性工程的分享與討論，而我也從中吸收了許多的知識以及前輩的經驗。所以，今年想透過鐵人賽，來記錄我作為一名 SRE，重新學習可觀測性工程的點點滴滴。同時，也希望能透過這篇系列文與這個領域的前輩們互相交流，持續學習進步。
+系列文架構 本系列將圍繞三大主題展開，希望能為正在思考如何為團隊建立可觀測性能力的工程師，以及想了解現代監控系統設計思維的 SRE，提供一些實用的思考框架和實踐經驗。
+Observability 的概念與演進
+從監控到可觀測性的演進脈絡 Observability 2.0 的資料觀點與技術需求 OpenTelemetry 設計理念與四大 signal 深度解析 Data Lakehouse 技術棧
+從 Data Lake 到 Data Lakehouse 的技術演進 Apache Iceberg 架構設計與 Schema Evolution 欄式儲存、OLAP 引擎與查詢優化 雲端 Data Lakehouse 的實際部署 實踐與整合
+OpenTelemetry Collector 的匯出與 ETL Pipeline 成本控制、效能優化與分層儲存 eBPF 與下世代可觀測性技術 每個主題都會結合實際案例和工具操作，避免純理論的討論。希望透過這三十天的分享，能與大家一起探索可觀測性工程的精髓，持續地討論與交流。</description>
     </item>
   </channel>
 </rss>
